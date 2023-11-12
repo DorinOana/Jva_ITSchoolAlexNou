@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration status="WARN">
+    <Appenders>
+        <!--Parallel version of logging-->
+        <Routing name="RoutingAppender">
+            <Routes pattern="$${ctx:threadName}">
+                <Route>
+                    <File
+                            fileName="target/logs/suite/${ctx:threadName}.log"
+                            name="appender-${ctx:threadName}"
+                            append="false">
+                        <PatternLayout>
+                            <Pattern>[%date{ISO8601}][%-5level][%t] %m%n</Pattern>
+                        </PatternLayout>
+                    </File>
+                </Route>
+            </Routes>
+        </Routing>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] - %msg%n"></PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"></AppenderRef>
+            <AppenderRef ref="RoutingAppender" />
+        </Root>
+    </Loggers>
+</Configuration>
