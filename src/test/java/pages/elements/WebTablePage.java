@@ -1,5 +1,6 @@
 package pages.elements;
 
+import database.queries.WebTable;
 import logger.LoggerUtility;
 import objectData.WebTableObject;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +12,11 @@ import java.util.List;
 
 public class WebTablePage extends ElementsPage {
 
+    private WebTable webTable;
+
     public WebTablePage(WebDriver driver) {
         super(driver);
+        webTable = new WebTable();
     }
 
     @FindBy(id = "addNewRecordButton")
@@ -69,6 +73,7 @@ public class WebTablePage extends ElementsPage {
 
         validateTableSize(webTableObject.getWebTableEntriesCount());
         validateNewEntry(webTableObject);
+        webTable.insertTableObject(webTableObject);
     }
 
     private void validateTableSize(int expected){
