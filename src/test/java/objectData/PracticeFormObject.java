@@ -67,10 +67,8 @@ public class PracticeFormObject implements PrepareObject {
 
     private void prepareDateOfBirth(){
         LocalDate currentDate = LocalDate.now();
-        LocalDate oneWeekAgo = currentDate.minusWeeks(1);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM,yyyy");
-        String formattedDate = oneWeekAgo.format(formatter);
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM,yyyy");
+        String formattedDate = currentDate.format(formatter);
         setDateOfBirth(formattedDate);
 
     }

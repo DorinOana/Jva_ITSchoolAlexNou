@@ -43,18 +43,25 @@ public class WebTablePage extends ElementsPage {
 
         elementMethods.clickElement(addNewEntryElement);
         LoggerUtility.info("The user clicks on addNewEntryElement");
+
         elementMethods.fillElement(firstNameElement, webTableObject.getFirstName());
         LoggerUtility.info("The user fills firstNameElement field with "+webTableObject.getFirstName()+" value");
+
         elementMethods.fillElement(lastNameElement, webTableObject.getLastName());
         LoggerUtility.info("The user fills lastNameElement field with "+webTableObject.getLastName()+" value");
+
         elementMethods.fillElement(emailElement, webTableObject.getEmail());
         LoggerUtility.info("The user fills emailElement field with "+webTableObject.getEmail()+" value");
+
         elementMethods.fillElement(ageElement, webTableObject.getAge());
         LoggerUtility.info("The user fills ageElement field with "+webTableObject.getAge()+" value");
+
         elementMethods.fillElement(salaryElement, webTableObject.getSalary());
         LoggerUtility.info("The user fills salaryElement field with "+webTableObject.getSalary()+" value");
+
         elementMethods.fillElement(departmentElement, webTableObject.getDepartment());
         LoggerUtility.info("The user fills departmentElement field with "+webTableObject.getDepartment()+" value");
+
         elementMethods.clickElement(submitElement);
         LoggerUtility.info("The user clicks on submitElement");
 
@@ -73,14 +80,19 @@ public class WebTablePage extends ElementsPage {
         String newEntryTable = tableRowsList.get(webTableObject.getWebTableEntriesCount() - 1).getText();
         Assert.assertTrue(newEntryTable.contains(webTableObject.getFirstName()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getFirstName()+" value");
+
         Assert.assertTrue(newEntryTable.contains(webTableObject.getLastName()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getLastName()+" value");
+
         Assert.assertTrue(newEntryTable.contains(webTableObject.getAge()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getAge()+" value");
+
         Assert.assertTrue(newEntryTable.contains(webTableObject.getEmail()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getEmail()+" value");
+
         Assert.assertTrue(newEntryTable.contains(webTableObject.getSalary()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getSalary()+" value");
+
         Assert.assertTrue(newEntryTable.contains(webTableObject.getDepartment()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getDepartment()+" value");
     }
@@ -92,18 +104,25 @@ public class WebTablePage extends ElementsPage {
 
         elementMethods.clickElement(tableEditButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
         LoggerUtility.info("The user clicks on editNewEntryElement");
+
         elementMethods.clearFillElement(firstNameElement, webTableObject.getFirstName());
         LoggerUtility.info("The user fills firstNameElement field with "+webTableObject.getFirstName()+" value");
+
         elementMethods.clearFillElement(lastNameElement, webTableObject.getLastName());
         LoggerUtility.info("The user fills lastNameElement field with "+webTableObject.getLastName()+" value");
+
         elementMethods.clearFillElement(emailElement, webTableObject.getEmail());
         LoggerUtility.info("The user fills emailElement field with "+webTableObject.getEmail()+" value");
+
         elementMethods.clearFillElement(ageElement, webTableObject.getAge());
         LoggerUtility.info("The user fills ageElement field with "+webTableObject.getAge()+" value");
+
         elementMethods.clearFillElement(salaryElement, webTableObject.getSalary());
         LoggerUtility.info("The user fills salaryElement field with "+webTableObject.getSalary()+" value");
+
         elementMethods.clearFillElement(departmentElement, webTableObject.getDepartment());
         LoggerUtility.info("The user fills departmentElement field with "+webTableObject.getDepartment()+" value");
+
         elementMethods.clickElement(submitElement);
         LoggerUtility.info("The user clicks on submitElement");
 
