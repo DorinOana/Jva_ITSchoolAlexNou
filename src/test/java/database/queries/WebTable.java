@@ -25,7 +25,7 @@ public class WebTable extends CommonTable {
     @SneakyThrows(SQLException.class)
     public synchronized void updateEntryById(Integer idWebTable, WebTableObject webTableObject){
         Statement stm = DatabaseConnection.getConnection().createStatement();
-        String query = "update webtable set department='"+webTableObject.getDepartment()+"', " +
+        String query = "update WebTable set department='"+webTableObject.getDepartment()+"', " +
                 "age='"+webTableObject.getAge()+"' where idWebTable="+idWebTable+";";
         stm.execute(query);
     }
@@ -33,7 +33,7 @@ public class WebTable extends CommonTable {
     @SneakyThrows(SQLException.class)
     public synchronized Integer getLatestIdBasedOnEntry(){
         Statement stm = DatabaseConnection.getConnection().createStatement();
-        String query = "select idWebTable from webtable order by idWebTable desc limit 1;";
+        String query = "select idWebTable from WebTable order by idWebTable desc limit 1;";
         ResultSet result = stm.executeQuery(query);
         return result.next() ? result.getInt("idWebTable") : 0;
     }
