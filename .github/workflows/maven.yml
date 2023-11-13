@@ -44,7 +44,7 @@ jobs:
 
       - name: Run SQL file
         run: |
-          mysql -h 127.0.0.1 -P 3308 -u root -proot < itSchoolDBQueries.sql
+          mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
       - name: Run tests
         run: |
