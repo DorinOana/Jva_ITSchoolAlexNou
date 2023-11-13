@@ -1,5 +1,6 @@
 package pages.forms;
 
+import database.queries.PracticeFormTable;
 import logger.LoggerUtility;
 import objectData.PracticeFormObject;
 import org.openqa.selenium.Keys;
@@ -12,8 +13,11 @@ import java.util.List;
 
 public class PracticeFormPage extends FormsPage{
 
+    public PracticeFormTable practiceFormTable;
+
     public PracticeFormPage(WebDriver driver) {
         super(driver);
+        practiceFormTable = new PracticeFormTable();
     }
 
     @FindBy(id = "firstName")
@@ -84,6 +88,7 @@ public class PracticeFormPage extends FormsPage{
         LoggerUtility.info("The user clicks on submitElement field");
 
         validateFinalTableValues(practiceFormObject);
+        practiceFormTable.insertTableObject(practiceFormObject);
     }
 
     private void fillGender(String value){

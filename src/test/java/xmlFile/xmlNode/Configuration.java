@@ -8,4 +8,6 @@ public class Configuration {
 
     @XmlElement(name="DriverConfig")
     public DriverConfig driverConfig;
+    @XmlElement(name = "DatabaseConfig")
+    public DatabaseConfig databaseConfig;
 }

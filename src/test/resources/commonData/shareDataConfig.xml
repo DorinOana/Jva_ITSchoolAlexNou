@@ -11,6 +11,9 @@
         <Sandbox>--no-sandbox</Sandbox>
     </DriverConfig>
     <DatabaseConfig>
-        -- tre sa definesc aici datele
+        <Port>3306</Port>
+        <Database>itschooldemoqadb</Database>
+        <Username>root</Username>
+        <Password>root</Password>
     </DatabaseConfig>
 </configuration>
