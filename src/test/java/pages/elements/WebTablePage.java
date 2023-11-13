@@ -133,6 +133,9 @@ public class WebTablePage extends ElementsPage {
 
         validateTableSize(webTableObject.getWebTableEntriesCount());
         validateNewEntry(webTableObject);
+
+        Integer latestIdEntry = webTable.getLatestIdBasedOnEntry();
+        webTable.updateEntryById(latestIdEntry, webTableObject);
     }
 
     public void deleteNewEntry(WebTableObject webTableObject){

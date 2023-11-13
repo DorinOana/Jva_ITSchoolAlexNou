@@ -23,32 +23,18 @@ public class WebTable extends CommonTable {
     }
 
     @SneakyThrows(SQLException.class)
-    public void updateValuesIntoAzimut(String oldfirstName, String newFirstName){
+    public synchronized void updateEntryById(Integer idWebTable, WebTableObject webTableObject){
         Statement stm = DatabaseConnection.getConnection().createStatement();
-        String query = "update AzimutVision set FirstName = '"+newFirstName+"' " +
-                "where FirstName = '"+oldfirstName+"';";
+        String query = "update webtable set department='"+webTableObject.getDepartment()+"', " +
+                "age='"+webTableObject.getAge()+"' where idWebTable="+idWebTable+";";
         stm.execute(query);
     }
 
     @SneakyThrows(SQLException.class)
-    public void selectValuesIntoAzimut(String firstNameValue){
+    public synchronized Integer getLatestIdBasedOnEntry(){
         Statement stm = DatabaseConnection.getConnection().createStatement();
-        String query = "select * from AzimutVision where FirstName = '"+firstNameValue+"';";
+        String query = "select idWebTable from webtable order by idWebTable desc limit 1;";
         ResultSet result = stm.executeQuery(query);
-        while (result.next()){
-            int id = result.getInt("idAzimut");
-            String firstName = result.getString("FirstName");
-            String lastName = result.getString("LastName");
-            String city = result.getString("City");
-            String address = result.getString("Address");
-            System.out.println(id + " " +firstName + " "+lastName + " "+ city + " " + address);
-        }
-    }
-
-    @SneakyThrows(SQLException.class)
-    public void deleteValuesIntoAzimut(String firstNameValue){
-        Statement stm = DatabaseConnection.getConnection().createStatement();
-        String query = "delete from AzimutVision where FirstName = '"+firstNameValue+"';";
-        stm.execute(query);
+        return result.next() ? result.getInt("idWebTable") : 0;
     }
 }
