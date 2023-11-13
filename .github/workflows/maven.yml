@@ -45,13 +45,8 @@ jobs:
           mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
       - name: Run tests
-        run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            BROWSER="chrome"
-          elif [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            BROWSER="${{ github.event.inputs.browser }}"
-          fi
-          mvn clean install -Dci_cd=true -Dbrowser="$BROWSER"
+        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}"
+
 
       - name: Publish regression logs
         if: always()
