@@ -16,6 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
 
+    services:
+      mysql:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - "3306:3306"
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - uses: actions/checkout@v3
 
@@ -32,12 +41,6 @@ jobs:
           distribution: 'temurin'
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
-
-      - name: Install MySQL
-        uses: mysqljs/mysql-action@v2
-        with:
-          mysql-version: '8.0'
-          root-password: root # Change this to a secure password
 
       - name: Run SQL file
         run: |
