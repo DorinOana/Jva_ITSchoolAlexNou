@@ -28,6 +28,7 @@ public class PracticeFormTable extends CommonTable {
                 "'"+ practiceFormObject.getCity()+"'," +
                 "'"+ getCurrentDateTime()+"');";
         stm.execute(query);
+        System.out.println("S-a executat cu succes query in db");
     }
 
     @SneakyThrows(SQLException.class)
