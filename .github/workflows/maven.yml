@@ -17,25 +17,44 @@ jobs:
       selenium-hub:
         image: selenium/hub:latest
         ports:
+          - "4442:4442"
+          - "4443:4443"
           - "4444:4444"
 
       chrome-node:
-        image: selenium/node-chrome:latest
+        image: selenium/node-chrome
+        shm_size: 2gb
+        depends_on:
+          - selenium-hub
+        environment:
+          - SE_EVENT_BUS_HOST=selenium-hub
+          - SE_EVENT_BUS_PUBLISH_PORT=4442
+          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+          - SE_NODE_GRID_URL=http://selenium-hub:4444
+          - SE_NODE_MAX_SESSIONS=10
+          - SE_NODE_OVERRIDE_MAX_SESSIONS=TRUE
+          - START_XVFB=false
+          - SE_VNC_NO_PASSWORD=1
         ports:
           - "5901:5900"
-        options: --link selenium-hub:hub
 
       edge-node:
-        image: selenium/node-edge:latest
+        image: selenium/node-edge
+        shm_size: 2gb
+        depends_on:
+          - selenium-hub
+        environment:
+          - SE_EVENT_BUS_HOST=selenium-hub
+          - SE_EVENT_BUS_PUBLISH_PORT=4442
+          - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+          - SE_NODE_GRID_URL=http://selenium-hub:4444
+          - SE_NODE_MAX_SESSIONS=10
+          - SE_NODE_OVERRIDE_MAX_SESSIONS=TRUE
+          - START_XVFB=false
+          - SE_VNC_NO_PASSWORD=1
         ports:
           - "5902:5900"
-        options: --link selenium-hub:hub
 
-      firefox-node:
-        image: selenium/node-firefox:latest
-        ports:
-          - "5903:5900"
-        options: --link selenium-hub:hub
 
       mysql:
         image: mysql
