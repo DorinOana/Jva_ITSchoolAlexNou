@@ -10,44 +10,11 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
     permissions: write-all
 
     services:
-      selenium-hub:
-        image: selenium/hub:latest
-        ports:
-          - "4442:4442"
-          - "4443:4443"
-
-      chrome-node:
-        image: selenium/node-chrome:latest
-        env:
-          SE_EVENT_BUS_HOST: selenium-hub
-          SE_EVENT_BUS_PUBLISH_PORT: 4442
-          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
-          SE_NODE_GRID_URL: http://selenium-hub:4444
-          SE_NODE_MAX_SESSIONS: 10
-          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
-          START_XVFB: false
-          SE_VNC_NO_PASSWORD: 1
-        ports:
-          - "5901:5900"
-
-      edge-node:
-        image: selenium/node-edge:latest
-        env:
-          SE_EVENT_BUS_HOST: selenium-hub
-          SE_EVENT_BUS_PUBLISH_PORT: 4442
-          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
-          SE_NODE_GRID_URL: http://selenium-hub:4444
-          SE_NODE_MAX_SESSIONS: 10
-          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
-          START_XVFB: false
-          SE_VNC_NO_PASSWORD: 1
-        ports:
-          - "5902:5900"
-
       mysql:
         image: mysql
         env:
@@ -78,7 +45,13 @@ jobs:
           mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
       - name: Run tests
-        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}" -DgridURL=http://localhost:4444/wd/hub
+        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}"
+
+      - name: Stop and Remove Docker Compose Services
+        run: docker-compose down
+
+      - name: Prune Docker Builder
+        run: docker builder prune -f
 
       - name: Publish regression logs
         if: always()
