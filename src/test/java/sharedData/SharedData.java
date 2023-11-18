@@ -10,11 +10,11 @@ public class SharedData {
 
     private WebDriver driver;
 
-    public void initializeDriver(){
+    public synchronized void initializeDriver(){
         driver = new BrowserFactory().getBrowserDriver();
     }
 
-    public void quitDriver(){
+    public synchronized void quitDriver(){
         driver.quit();
         LoggerUtility.info("The driver is closed with success");
     }
