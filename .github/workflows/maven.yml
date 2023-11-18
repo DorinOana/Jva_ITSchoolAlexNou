@@ -7,6 +7,10 @@ on:
         description: 'Choose browser: chrome, edge, firefox'
         required: true
         default: 'chrome'
+      suite:
+        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
+        required: true
+        default: 'RegressionSuite'
 
 jobs:
   build:
@@ -45,7 +49,7 @@ jobs:
           mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
       - name: Run tests
-        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}"
+        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}" -P "${{ github.event.inputs.suite }}"
 
       - name: Publish regression logs
         if: always()
