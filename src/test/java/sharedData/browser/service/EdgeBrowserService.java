@@ -20,8 +20,8 @@ public class EdgeBrowserService implements BrowserService {
     public void openBrowser(DriverConfig driverConfig) {
         EdgeOptions options = (EdgeOptions) getBrowserOptions(driverConfig);
         driver = new EdgeDriver(options);
-        driver.get(driverConfig.url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.get(driverConfig.url);
         LoggerUtility.info("The driver is opened with success");
     }
 

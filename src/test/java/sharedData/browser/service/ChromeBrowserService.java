@@ -20,6 +20,7 @@ public class ChromeBrowserService implements BrowserService {
     public void openBrowser(DriverConfig driverConfig) {
         ChromeOptions options = (ChromeOptions) getBrowserOptions(driverConfig);
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.get(driverConfig.url);
         LoggerUtility.info("The driver is opened with success");
     }
