@@ -9,6 +9,7 @@
         <Extensions>--disable-extensions</Extensions>
         <Resolution>window-size=1920,1080</Resolution>
         <Sandbox>--no-sandbox</Sandbox>
+        <RemoteUrl>http://localhost:4444/wd/hub</RemoteUrl>
     </DriverConfig>
     <DatabaseConfig>
         <Port>3306</Port>

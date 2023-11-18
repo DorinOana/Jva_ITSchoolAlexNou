@@ -10,18 +10,32 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions: write-all
 
     services:
-      mysql:
-        image: mysql
-        env:
-          MYSQL_ROOT_PASSWORD: root
+      selenium-hub:
+        image: selenium/hub:latest
         ports:
-          - "3306:3306"
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+          - "4444:4444"
+
+      chrome-node:
+        image: selenium/node-chrome:latest
+        ports:
+          - "5901:5900"
+        options: --link selenium-hub:hub
+
+      edge-node:
+        image: selenium/node-edge:latest
+        ports:
+          - "5902:5900"
+        options: --link selenium-hub:hub
+
+      firefox-node:
+        image: selenium/node-firefox:latest
+        ports:
+          - "5903:5900"
+        options: --link selenium-hub:hub
 
     steps:
       - uses: actions/checkout@v3
@@ -45,8 +59,7 @@ jobs:
           mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
       - name: Run tests
-        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}"
-
+        run: mvn clean install -Dci_cd=true -Dbrowser="${{ github.event.inputs.browser }}" -DgridURL=http://localhost:4444/wd/hub
 
       - name: Publish regression logs
         if: always()
