@@ -45,7 +45,7 @@ public class WebTablePage extends ElementsPage {
     public void addEntryIntoTable(WebTableObject webTableObject){
         webTableObject.setWebTableEntriesCount(tableRowsList.size());
 
-        elementMethods.clickElement(addNewEntryElement);
+        elementMethods.clickElementJS(addNewEntryElement);
         LoggerUtility.info("The user clicks on addNewEntryElement");
 
         elementMethods.fillElement(firstNameElement, webTableObject.getFirstName());

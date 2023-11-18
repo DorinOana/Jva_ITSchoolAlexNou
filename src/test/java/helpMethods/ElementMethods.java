@@ -30,28 +30,12 @@ public class ElementMethods {
         webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(identificator));
     }
 
-    public void waitForce(long value) {
-        try {
-            Thread.sleep(value);
-        } catch (InterruptedException ignored) {
-        }
-    }
-
     public void visibilityOfElement(WebElement element) {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public void visibilityOfElements(List<WebElement> elements) {
         webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
-    }
-
-    public void presenceOfElements(By locator) {
-        webDriverWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }
-
-    public void validateElementMessage(WebElement element, String expected) {
-        visibilityOfElement(element);
-        Assert.assertEquals(element.getText(), expected);
     }
 
     public void clickElement(WebElement webElement) {
@@ -63,11 +47,6 @@ public class ElementMethods {
         visibilityOfElement(element);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);
-    }
-
-    public void clickElement(By locator) {
-        visibilityOfElement(driver.findElement(locator));
-        driver.findElement(locator).click();
     }
 
     public void fillElement(WebElement element, String value) {
@@ -84,29 +63,5 @@ public class ElementMethods {
         visibilityOfElement(element);
         element.clear();
         element.sendKeys(value);
-    }
-
-    public void selectElementByText(WebElement element, String value) {
-        visibilityOfElement(element);
-        Select select = new Select(element);
-        select.selectByVisibleText(value);
-    }
-
-    public void selectElementByValue(WebElement element, String value) {
-        visibilityOfElement(element);
-        Select select = new Select(element);
-        select.selectByValue(value);
-    }
-
-    public void hoverElement(By selector) {
-        visibilityOfElementLocatedBy(selector);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(selector)).build().perform();
-    }
-
-    public void hoverElement(WebElement element) {
-        visibilityOfElement(element);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element).build().perform();
     }
 }
