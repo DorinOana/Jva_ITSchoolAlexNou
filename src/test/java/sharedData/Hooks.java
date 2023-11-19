@@ -17,12 +17,12 @@ public class Hooks extends SharedData{
     public HashMap<String, String> testData;
 
     @BeforeSuite
-    public synchronized void initiateTestReport(){
+    public void initiateTestReport(){
         ExtentUtility.initiateReport();
     }
 
     @BeforeMethod
-    public synchronized void initializeObjects(){
+    public void initializeObjects(){
         testName = this.getClass().getSimpleName();
         LoggerUtility.startTestCase(testName);
         ExtentUtility.createTest(testName);
@@ -33,7 +33,7 @@ public class Hooks extends SharedData{
     }
 
     @AfterMethod
-    public synchronized void closeBrowser(ITestResult result){
+    public void closeBrowser(ITestResult result){
         if(result.getStatus() == ITestResult.FAILURE){
             ExtentUtility.attachTestLog(testName, result.getThrowable().getMessage(), getDriver());
         }
@@ -43,7 +43,7 @@ public class Hooks extends SharedData{
     }
 
     @AfterSuite
-    public synchronized void mergeRegressionLogs(){
+    public void mergeRegressionLogs(){
         LoggerUtility.mergeLogFilesIntoOne();
         ExtentUtility.generateReport();
     }
