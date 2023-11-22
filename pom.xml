@@ -72,6 +72,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.epam.reportportal/logger-java-log4j -->
+        <dependency>
+            <groupId>com.epam.reportportal</groupId>
+            <artifactId>agent-java-testng</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.reportportal</groupId>
+            <artifactId>logger-java-log4j</artifactId>
+            <version>5.1.8</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <profiles>

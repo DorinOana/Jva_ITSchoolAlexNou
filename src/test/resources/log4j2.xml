@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Configuration status="WARN">
     <Appenders>
-        <!--Parallel version of logging-->
+        <!-- Parallel version of logging -->
         <Routing name="RoutingAppender">
             <Routes pattern="$${ctx:threadName}">
                 <Route>
@@ -16,14 +16,29 @@
                 </Route>
             </Routes>
         </Routing>
+
+        <!-- Console appender for local logs -->
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] - %msg%n"></PatternLayout>
         </Console>
+        <ReportPortalLog4j2Appender name="ReportPortalAppender">
+            <PatternLayout
+                    pattern="%d{HH:mm:ss.SSS} [%t] [%-5level] - %msg%n"/>
+        </ReportPortalLog4j2Appender>
     </Appenders>
+
     <Loggers>
         <Root level="info">
-            <AppenderRef ref="Console"></AppenderRef>
+            <AppenderRef ref="Console" />
             <AppenderRef ref="RoutingAppender" />
+            <AppenderRef ref="ReportPortalAppender" />
         </Root>
+        <Logger name="com.epam.reportportal" level="INFO" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="ReportPortalAppender"/>
+        </Logger>
+        <Logger name="binary_data_logger" level="INFO" additivity="false">
+            <AppenderRef ref="ReportPortalAppender"/>
+        </Logger>
     </Loggers>
 </Configuration>
