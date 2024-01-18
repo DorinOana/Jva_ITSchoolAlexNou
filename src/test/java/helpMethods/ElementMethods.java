@@ -61,4 +61,10 @@ public class ElementMethods {
         element.clear();
         element.sendKeys(value);
     }
+
+    public void selectElement(WebElement element, String value){
+        visibilityOfElement(element);
+        Select select = new Select(element);
+        select.selectByVisibleText(value);
+    }
 }

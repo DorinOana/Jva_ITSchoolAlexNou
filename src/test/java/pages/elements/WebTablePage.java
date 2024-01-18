@@ -107,7 +107,7 @@ public class WebTablePage extends ElementsPage {
         webTableObject.setDepartment("programming");
         webTableObject.setAge("29");
 
-        elementMethods.clickElement(tableEditButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
+        elementMethods.clickElementJS(tableEditButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
         LoggerUtility.info("The user clicks on editNewEntryElement");
 
         elementMethods.clearFillElement(firstNameElement, webTableObject.getFirstName());
@@ -139,7 +139,7 @@ public class WebTablePage extends ElementsPage {
     }
 
     public void deleteNewEntry(WebTableObject webTableObject){
-        elementMethods.clickElement(tableDeleteButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
+        elementMethods.clickElementJS(tableDeleteButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
         LoggerUtility.info("The user clicks on deleteNewEntryElement");
         validateTableSize(webTableObject.getWebTableEntriesCount() - 1);
     }

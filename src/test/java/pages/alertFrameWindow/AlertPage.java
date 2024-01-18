@@ -46,7 +46,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertValue(AlertObject alertObject) {
-        elementMethods.clickElement(alertValueElement);
+        elementMethods.clickElementJS(alertValueElement);
         LoggerUtility.info("The user clicks on alertValueElement");
 
         alertMethods.alertWithText(alertObject.getAlertValue());

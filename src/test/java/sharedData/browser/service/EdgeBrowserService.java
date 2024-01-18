@@ -36,6 +36,8 @@ public class EdgeBrowserService implements BrowserService {
         options.addArguments(driverConfig.sandbox);
         options.addArguments(driverConfig.infoBars);
         options.addArguments(driverConfig.extensions);
+        options.addArguments(driverConfig.browserCheck);
+        options.addArguments(driverConfig.devShm);
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
         return options;
     }

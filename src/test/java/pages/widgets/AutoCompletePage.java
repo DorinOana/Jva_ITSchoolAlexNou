@@ -48,6 +48,7 @@ public class AutoCompletePage extends WidgetsPage{
         elementMethods.fillElement(singleColorElement, Keys.ENTER);
         LoggerUtility.info("The user presses enter in order to select the color");
 
+        elementMethods.visibilityOfElement(selectedSingleColorElement);
         Assert.assertEquals(autoCompleteObject.getSingleColor(), selectedSingleColorElement.getText());
         LoggerUtility.info("The user validates the presence of selected color");
         return this;

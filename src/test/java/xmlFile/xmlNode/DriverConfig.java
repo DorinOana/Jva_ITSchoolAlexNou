@@ -28,4 +28,8 @@ public class DriverConfig {
     public String sandbox;
     @XmlElement(name="RemoteUrl")
     public String remoteUrl;
+    @XmlElement(name = "BrowserCheck")
+    public String browserCheck;
+    @XmlElement(name = "DevShm")
+    public String devShm;
 }

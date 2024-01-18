@@ -3,12 +3,14 @@
     <DriverConfig>
         <LocalBrowser>chrome</LocalBrowser>
         <Url>https://demoqa.com/</Url>
-        <Headless></Headless>
+        <Headless>--headless</Headless>
         <Gpu>--disable-gpu</Gpu>
         <Infobars>--disable-infobars</Infobars>
         <Extensions>--disable-extensions</Extensions>
         <Resolution>window-size=1920,1080</Resolution>
         <Sandbox>--no-sandbox</Sandbox>
+        <BrowserCheck>--no-default-browser-check</BrowserCheck>
+        <DevShm>--disable-dev-shm-usage</DevShm>
         <RemoteUrl>http://localhost:4444/wd/hub</RemoteUrl>
     </DriverConfig>
     <DatabaseConfig>

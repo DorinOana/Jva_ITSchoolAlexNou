@@ -126,13 +126,13 @@ public class PracticeFormPage extends FormsPage{
     }
 
     private void fillState(String value){
-        elementMethods.clickElement(stateElement);
+        elementMethods.clickElementJS(stateElement);
         elementMethods.fillElement(stateInputElement, value);
         elementMethods.fillElement(stateInputElement, String.valueOf(Keys.ENTER));
     }
 
     private void fillCity(String value){
-        elementMethods.clickElement(cityElement);
+        elementMethods.clickElementJS(cityElement);
         elementMethods.fillElement(cityInputElement, value);
         elementMethods.fillElement(cityInputElement, String.valueOf(Keys.ENTER));
     }

@@ -2,11 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="RegressionSuite" thread-count="3" parallel="classes">
     <test name="RegressionSuite">
-        <classes>
-            <class name="tests.WebTableTest" />
-            <class name="tests.PracticeFormTest" />
-            <class name="tests.AccordionTest" />
-            <class name="tests.AutoCompleteTest" />
-        </classes>
+        <packages>
+            <package name="tests.*"/>
+        </packages>
     </test>
 </suite>
