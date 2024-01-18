@@ -1,11 +1,13 @@
 package objectData;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.HashMap;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class WebTableObject implements PrepareObject {
+public class WebTableObject extends BaseObject implements PrepareObject {
 
     private String firstName;
     private String lastName;

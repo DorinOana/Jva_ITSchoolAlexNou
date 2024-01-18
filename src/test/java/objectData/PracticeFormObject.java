@@ -1,12 +1,15 @@
 package objectData;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class PracticeFormObject implements PrepareObject {
+public class PracticeFormObject extends BaseObject implements PrepareObject {
 
     private String firstName;
     private String lastName;
@@ -25,6 +28,7 @@ public class PracticeFormObject implements PrepareObject {
         prepareDateOfBirth();
     }
 
+    @Override
     public void populateObject(HashMap<String, String> testData) {
         for (String key : testData.keySet()) {
             switch (key) {
@@ -70,7 +74,5 @@ public class PracticeFormObject implements PrepareObject {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM,yyyy");
         String formattedDate = currentDate.format(formatter);
         setDateOfBirth(formattedDate);
-
     }
-
 }

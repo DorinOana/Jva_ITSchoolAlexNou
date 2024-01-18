@@ -10,17 +10,16 @@ public class PropertiesFile {
     private Properties properties;
 
     public PropertiesFile(String fileName){
-        LoadFile(fileName);
+        loadFile(fileName);
     }
 
-    public void LoadFile(String fileName){
+    private void loadFile(String fileName){
         properties = new Properties();
         try {
             FileInputStream fileInputStream = new FileInputStream("src/test/resources/" + fileName + ".properties");
             properties.load(fileInputStream);
         }
-        catch (IOException exception){
-            System.out.println(exception.getMessage());
+        catch (IOException ignored){
         }
     }
 

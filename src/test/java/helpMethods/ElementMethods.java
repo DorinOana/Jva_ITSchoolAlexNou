@@ -1,10 +1,7 @@
 package helpMethods;
 
 import objectData.WebTableObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -23,11 +20,6 @@ public class ElementMethods {
     public ElementMethods(WebDriver driver) {
         this.driver = driver;
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-    }
-
-    public void visibilityOfElementLocatedBy(By identificator) {
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(identificator));
-        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(identificator));
     }
 
     public void visibilityOfElement(WebElement element) {
@@ -50,6 +42,11 @@ public class ElementMethods {
     }
 
     public void fillElement(WebElement element, String value) {
+        visibilityOfElement(element);
+        element.sendKeys(value);
+    }
+
+    public void fillElement(WebElement element, Keys value) {
         visibilityOfElement(element);
         element.sendKeys(value);
     }

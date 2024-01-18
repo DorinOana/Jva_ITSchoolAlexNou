@@ -1,11 +1,14 @@
 package objectData;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import pages.BasePage;
 
 import java.util.HashMap;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class AlertObject implements PrepareObject {
+public class AlertObject extends BaseObject implements PrepareObject {
 
     private String alertValue;
 
