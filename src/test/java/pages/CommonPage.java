@@ -22,7 +22,7 @@ public class CommonPage extends BasePage{
             if (subMenuOptionsList.get(index).getText().equalsIgnoreCase(subMenu)){
                 elementMethods.scrollDownElement(300);
                 LoggerUtility.info("The user scrolls down the page for seeing subMenu: "+subMenu);
-                elementMethods.clickElement(subMenuOptionsList.get(index));
+                elementMethods.clickElementJS(subMenuOptionsList.get(index));
                 LoggerUtility.info("The user clicks on subMenu: "+subMenu);
                 break;
             }

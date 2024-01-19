@@ -16,6 +16,7 @@ public class MenuPageType {
     public static String SUB_MENU_ACCORDIAN = "Accordian";
     public static String SUB_MENU_AUTOCOMPLETE = "Auto Complete";
     public static String SUB_MENU_DATEPICKER = "Date Picker";
-
-
+    public static String SUB_MENU_SLIDER = "Slider";
+    public static String SUB_MENU_PROGRESS = "Progress Bar";
+    public static String SUB_MENU_TOOLTIPS = "Tool Tips";
 }

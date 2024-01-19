@@ -35,6 +35,12 @@ public class ElementMethods {
         webElement.click();
     }
 
+    public void hoverElement(WebElement webElement) {
+        visibilityOfElement(webElement);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(webElement).perform();
+    }
+
     public void clickElementJS(WebElement element) {
         visibilityOfElement(element);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
