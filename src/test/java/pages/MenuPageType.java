@@ -19,4 +19,5 @@ public class MenuPageType {
     public static String SUB_MENU_SLIDER = "Slider";
     public static String SUB_MENU_PROGRESS = "Progress Bar";
     public static String SUB_MENU_TOOLTIPS = "Tool Tips";
+    public static String SUB_MENU_SELECTMENU = "Select Menu";
 }
