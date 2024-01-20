@@ -19,7 +19,7 @@ public class ElementMethods {
 
     public ElementMethods(WebDriver driver) {
         this.driver = driver;
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     public void visibilityOfElement(WebElement element) {
