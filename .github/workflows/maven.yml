@@ -33,10 +33,7 @@ jobs:
           - "4444:4444"
 
       chrome-node:
-        name: Chrome Node
-        runs-on: ubuntu-latest
-        container:
-          image: selenium/node-chrome:latest
+        image: selenium/node-chrome:latest
         env:
           HUB_HOST: selenium-hub
           SE_OPTS: -browser "browserName=chrome,maxInstances=10"
