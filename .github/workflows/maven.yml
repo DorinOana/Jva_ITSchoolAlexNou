@@ -37,7 +37,6 @@ jobs:
           expire-in: 0days # Set this to 0 to delete all artifacts
 
       - name: Set up JDK 11
-        env:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
