@@ -48,19 +48,14 @@ jobs:
         run: |
           mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
 
-      - name: Run tests
+      - name: Run ${{ github.event.inputs.suite }}
         run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -DsuiteXmlFile=suites/${{ github.event.inputs.suite }} -PCustomSuite
 
-      - name: Publish regression logs
+      - name: Publish suite results
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: RegressionLogs
-          path: target/logs/RegressionLogs.log
-
-      - name: Publish html report
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: ExtentReport
-          path: target/extentReports
+          name: SuiteResults
+          path: |
+            target/logs/RegressionLogs.log
+            target/extentReports
