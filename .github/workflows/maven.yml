@@ -4,13 +4,20 @@ on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Choose browser: chrome, edge, firefox'
+        description: 'Choose browser'
         required: true
         default: 'chrome'
+        options:
+          - 'chrome'
+          - 'edge'
+          - 'firefox'
       suite:
-        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
+        description: 'Choose automation suite'
         required: true
         default: 'RegressionSuite'
+        options:
+          - 'RegressionSuite'
+          - 'FeaturesSuite'
 
 jobs:
   build:
