@@ -27,35 +27,6 @@ jobs:
           - "3306:3306"
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-      chrome:
-        image: selenium/node-chrome
-        options: --shm-size=2gb
-        ports:
-          - "5900"
-        env:
-          SE_EVENT_BUS_HOST: localhost
-          SE_EVENT_BUS_PUBLISH_PORT: 4442
-          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
-          SE_NODE_GRID_URL: http://localhost:4444
-          SE_NODE_MAX_SESSIONS: 20
-          SE_NODE_SESSION_TIMEOUT: 180
-          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
-          START_XVFB: false
-      edge:
-        image: selenium/node-edge
-        options: --shm-size=2gb
-        ports:
-          - "5901"
-        env:
-          SE_EVENT_BUS_HOST: localhost
-          SE_EVENT_BUS_PUBLISH_PORT: 4442
-          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
-          SE_NODE_GRID_URL: http://localhost:4444
-          SE_NODE_MAX_SESSIONS: 20
-          SE_NODE_SESSION_TIMEOUT: 180
-          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
-          START_XVFB: false
-
     steps:
       - uses: actions/checkout@v3
 
@@ -67,7 +38,6 @@ jobs:
 
       - name: Set up JDK 11
         env:
-          ACTIONS_RUNNER_DEBUG: true
         uses: actions/setup-java@v3
         with:
           java-version: '11'
