@@ -31,12 +31,16 @@ jobs:
         image: selenium/hub:latest
         ports:
           - "4444:4444"
+        networks:
+          - selenium-network
 
       chrome-node:
         image: selenium/node-chrome:latest
         env:
           HUB_HOST: selenium-hub
           SE_OPTS: -browser "browserName=chrome,maxInstances=10"
+        networks:
+          - selenium-network
 
     steps:
       - uses: actions/checkout@v3
@@ -48,6 +52,8 @@ jobs:
           expire-in: 0days # Set this to 0 to delete all artifacts
 
       - name: Set up JDK 11
+        env:
+          ACTIONS_RUNNER_DEBUG: true
         uses: actions/setup-java@v3
         with:
           java-version: '11'
