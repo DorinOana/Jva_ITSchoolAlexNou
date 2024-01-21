@@ -1,4 +1,4 @@
-package sharedData.browser.service.local;
+package sharedData.browser.service;
 
 import logger.LoggerUtility;
 import lombok.Getter;
