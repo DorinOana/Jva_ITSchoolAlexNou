@@ -34,15 +34,8 @@ jobs:
 
       chrome-node:
         image: selenium/node-chrome:latest
-        environment:
-          - HUB_HOST=selenium-hub
-          - SE_OPTS=-browser "browserName=chrome,maxInstances=10"
-
-      edge-node:
-        image: selenium/node-edge:latest
-        environment:
-          - HUB_HOST=selenium-hub
-          - SE_OPTS=-browser "browserName=edge,maxInstances=10"
+        depends-on:
+          - selenium-hub
 
     steps:
       - uses: actions/checkout@v3
