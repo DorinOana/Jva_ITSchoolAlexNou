@@ -27,20 +27,34 @@ jobs:
           - "3306:3306"
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-      selenium-hub:
-        image: selenium/hub:latest
+      chrome:
+        image: selenium/node-chrome
+        options: --shm-size=2gb
         ports:
-          - "4444:4444"
-        networks:
-          - selenium-network
-
-      chrome-node:
-        image: selenium/node-chrome:latest
+          - "5900"
         env:
-          HUB_HOST: selenium-hub
-          SE_OPTS: -browser "browserName=chrome,maxInstances=10"
-        networks:
-          - selenium-network
+          SE_EVENT_BUS_HOST: localhost
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
+          SE_NODE_GRID_URL: http://localhost:4444
+          SE_NODE_MAX_SESSIONS: 20
+          SE_NODE_SESSION_TIMEOUT: 180
+          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
+          START_XVFB: false
+      edge:
+        image: selenium/node-edge
+        options: --shm-size=2gb
+        ports:
+          - "5901"
+        env:
+          SE_EVENT_BUS_HOST: localhost
+          SE_EVENT_BUS_PUBLISH_PORT: 4442
+          SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
+          SE_NODE_GRID_URL: http://localhost:4444
+          SE_NODE_MAX_SESSIONS: 20
+          SE_NODE_SESSION_TIMEOUT: 180
+          SE_NODE_OVERRIDE_MAX_SESSIONS: TRUE
+          START_XVFB: false
 
     steps:
       - uses: actions/checkout@v3
