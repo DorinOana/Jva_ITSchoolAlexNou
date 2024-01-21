@@ -20,9 +20,7 @@ public class DBConnection {
     @SneakyThrows(SQLException.class)
     private void createConnection() {
         Configuration configuration = GeneralXml.CreateConfig(Configuration.class);
-
-        String connectionURL = "jdbc:mysql://localhost:"+configuration.databaseConfig.port+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
-        con = DriverManager.getConnection(connectionURL, configuration.databaseConfig.username, configuration.databaseConfig.password);
+        con = DriverManager.getConnection(getPreparedUrl(configuration), configuration.databaseConfig.username, configuration.databaseConfig.password);
     }
 
     public static synchronized DBConnection getInstance() {
@@ -30,6 +28,15 @@ public class DBConnection {
             instance = new DBConnection();
         }
         return instance;
+    }
+
+    private static synchronized String getPreparedUrl(Configuration configuration){
+        if (Boolean.parseBoolean(System.getProperty("ci_cd"))){
+            return "jdbc:mysql://localhost:"+configuration.databaseConfig.remotePort+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
+        }
+        else {
+            return "jdbc:mysql://localhost:"+configuration.databaseConfig.port+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
+        }
     }
 
     public Connection getConnection() {

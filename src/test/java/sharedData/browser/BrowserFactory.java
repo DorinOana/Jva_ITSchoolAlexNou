@@ -1,8 +1,8 @@
 package sharedData.browser;
 
 import org.openqa.selenium.WebDriver;
-import sharedData.browser.service.ChromeBrowserService;
-import sharedData.browser.service.EdgeBrowserService;
+import sharedData.browser.service.local.ChromeBrowserService;
+import sharedData.browser.service.local.EdgeBrowserService;
 import xmlFile.GeneralXml;
 import xmlFile.xmlNode.Configuration;
 

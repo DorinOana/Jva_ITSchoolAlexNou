@@ -1,25 +1,29 @@
-package sharedData.browser.service;
+package sharedData.browser.service.remote;
 
 import logger.LoggerUtility;
 import lombok.Getter;
+import lombok.SneakyThrows;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import sharedData.browser.service.BrowserService;
 import xmlFile.xmlNode.DriverConfig;
 
+import java.net.URL;
 import java.time.Duration;
 
 @Getter
-public class ChromeBrowserService implements BrowserService {
+public class ChromeBrowserRemoteService implements BrowserService {
 
     private WebDriver driver;
 
+    @SneakyThrows
     @Override
     public void openBrowser(DriverConfig driverConfig) {
         ChromeOptions options = (ChromeOptions) getBrowserOptions(driverConfig);
-        driver = new ChromeDriver(options);
+        driver = new RemoteWebDriver(new URL(driverConfig.remoteUrl), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.get(driverConfig.url);
         LoggerUtility.info("The driver is opened with success");

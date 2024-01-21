@@ -18,5 +18,6 @@
         <Database>itschooldemoqadb</Database>
         <Username>root</Username>
         <Password>root</Password>
+        <RemotePort>3308</RemotePort>
     </DatabaseConfig>
 </configuration>
