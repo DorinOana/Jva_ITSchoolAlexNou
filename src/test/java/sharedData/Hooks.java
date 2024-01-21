@@ -36,6 +36,7 @@ public class Hooks extends SharedData{
     public void closeBrowser(ITestResult result){
         if(result.getStatus() == ITestResult.FAILURE){
             ExtentUtility.attachTestLog(testName, result.getThrowable().getMessage(), getDriver());
+            LoggerUtility.error(result.getThrowable().getMessage());
         }
         quitDriver();
         ExtentUtility.finishTest(testName);
