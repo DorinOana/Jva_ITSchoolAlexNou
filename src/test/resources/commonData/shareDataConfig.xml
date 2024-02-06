@@ -11,7 +11,6 @@
         <Sandbox>--no-sandbox</Sandbox>
         <BrowserCheck>--no-default-browser-check</BrowserCheck>
         <DevShm>--disable-dev-shm-usage</DevShm>
-        <RemoteUrl>http://localhost:4444/wd/hub</RemoteUrl>
     </DriverConfig>
     <DatabaseConfig>
         <Port>3306</Port>

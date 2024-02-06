@@ -26,8 +26,6 @@ public class DriverConfig {
     public String resolution;
     @XmlElement(name="Sandbox")
     public String sandbox;
-    @XmlElement(name="RemoteUrl")
-    public String remoteUrl;
     @XmlElement(name = "BrowserCheck")
     public String browserCheck;
     @XmlElement(name = "DevShm")
