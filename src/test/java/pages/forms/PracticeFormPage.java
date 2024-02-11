@@ -89,6 +89,7 @@ public class PracticeFormPage extends FormsPage{
 
         validateFinalTableValues(practiceFormObject);
         practiceFormTable.insertTableObject(practiceFormObject);
+        LoggerUtility.info("All the data were added into database");
     }
 
     private void fillGender(String value){
