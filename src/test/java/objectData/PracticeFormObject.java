@@ -25,7 +25,6 @@ public class PracticeFormObject extends BaseObject implements PrepareObject {
 
     public PracticeFormObject(HashMap<String, String> listValues){
         populateObject(listValues);
-        prepareDateOfBirth();
     }
 
     @Override
@@ -67,12 +66,5 @@ public class PracticeFormObject extends BaseObject implements PrepareObject {
                     break;
             }
         }
-    }
-
-    private void prepareDateOfBirth(){
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM,yyyy");
-        String formattedDate = currentDate.format(formatter);
-        setDateOfBirth(formattedDate);
     }
 }
