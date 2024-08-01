@@ -19,7 +19,7 @@ public class DBConnection {
 
     @SneakyThrows(SQLException.class)
     private void createConnection() {
-        Configuration configuration = GeneralXml.CreateConfig(Configuration.class);
+        Configuration configuration = new GeneralXml().createConfig(Configuration.class);
         con = DriverManager.getConnection(getPreparedUrl(configuration), configuration.databaseConfig.username, configuration.databaseConfig.password);
     }
 

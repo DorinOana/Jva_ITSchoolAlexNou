@@ -1,0 +1,13 @@
+{
+  "firstName": "Testing",
+  "lastName": "Automation",
+  "email": "testing@automation.com",
+  "gender": "Male",
+  "mobile": "1234567890",
+  "dateOfBirth": "10 December 2030",
+  "subjects": "Maths",
+  "hobbies": "Sports",
+  "address": "Testing address 1",
+  "state": "NCR",
+  "city": "Delhi"
+}

@@ -2,13 +2,12 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.ProgressObject;
-import objectData.SliderObject;
+import objectData.DataResource;
+import objectData.model.ProgressObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
 import pages.widgets.ProgressPage;
-import pages.widgets.SliderPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
 
@@ -16,7 +15,7 @@ public class ProgressTest extends Hooks {
 
     @Test
     public void progressMethod() {
-        ProgressObject progressObject = new ProgressObject(testData);
+        ProgressObject progressObject = new ProgressObject(DataResource.TEST_PROGRESS_BAR);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

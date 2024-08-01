@@ -2,7 +2,8 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.WebTableObject;
+import objectData.DataResource;
+import objectData.model.WebTableObject;
 import org.testng.annotations.Test;
 import pages.MenuPageType;
 import pages.elements.ElementsPage;
@@ -14,7 +15,7 @@ public class WebTableTest extends Hooks {
 
     @Test
     public void webTableMethod() {
-        WebTableObject webTableObject = new WebTableObject(testData);
+        WebTableObject webTableObject = new WebTableObject(DataResource.TEST_WEB_TABLE);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_ELEMENTS);

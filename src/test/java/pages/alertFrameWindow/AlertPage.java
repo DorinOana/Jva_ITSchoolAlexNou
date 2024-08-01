@@ -1,7 +1,7 @@
 package pages.alertFrameWindow;
 
 import logger.LoggerUtility;
-import objectData.AlertObject;
+import objectData.model.AlertObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

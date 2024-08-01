@@ -7,14 +7,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-import propertyUtility.PropertiesFile;
-
-import java.util.HashMap;
 
 public class Hooks extends SharedData{
 
     public String testName;
-    public HashMap<String, String> testData;
 
     @BeforeSuite
     public void initiateTestReport(){
@@ -28,8 +24,6 @@ public class Hooks extends SharedData{
         ExtentUtility.createTest(testName);
 
         initializeDriver();
-        PropertiesFile propertiesFile = new PropertiesFile("/inputTestData/" + testName + "Data");
-        testData = propertiesFile.getAllValues();
     }
 
     @AfterMethod

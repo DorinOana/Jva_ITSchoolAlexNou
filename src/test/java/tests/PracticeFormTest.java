@@ -2,7 +2,8 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.PracticeFormObject;
+import objectData.DataResource;
+import objectData.model.PracticeFormObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
@@ -14,7 +15,7 @@ public class PracticeFormTest extends Hooks {
 
     @Test
     public void practiceFormMethod() {
-        PracticeFormObject practiceFormObject = new PracticeFormObject(testData);
+        PracticeFormObject practiceFormObject = new PracticeFormObject(DataResource.TEST_PRACTICE_FORM);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_FORMS);

@@ -1,9 +1,7 @@
 package pages.widgets;
 
 import logger.LoggerUtility;
-import objectData.ProgressObject;
-import objectData.SliderObject;
-import org.openqa.selenium.Keys;
+import objectData.model.ProgressObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -2,13 +2,11 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.AlertObject;
-import objectData.SliderObject;
+import objectData.DataResource;
+import objectData.model.SliderObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
-import pages.alertFrameWindow.AlertFrameWindowPage;
-import pages.alertFrameWindow.AlertPage;
 import pages.widgets.SliderPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
@@ -17,7 +15,7 @@ public class SliderTest extends Hooks {
 
     @Test
     public void sliderMethod() {
-        SliderObject sliderObject = new SliderObject(testData);
+        SliderObject sliderObject = new SliderObject(DataResource.TEST_SLIDER);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

@@ -1,15 +1,16 @@
 package objectData;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
+
+import java.io.File;
+import java.io.IOException;
 
 public class BaseObject {
 
-    public List<String> getPreparedList(String value){
-        String[] splitValues = value.split(",");
-        return Arrays.stream(splitValues)
-                .map(String::trim)
-                .collect(Collectors.toList());
+    @SneakyThrows(IOException.class)
+    protected void fromJsonFile(String filePath) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.readerForUpdating(this).readValue(new File(filePath));
     }
 }

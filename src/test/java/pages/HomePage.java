@@ -18,12 +18,12 @@ public class HomePage extends CommonPage{
 
     public void enterSpecificMenu(String menu){
         elementMethods.visibilityOfElements(menuOptionsList);
-        for (int index = 0; index < menuOptionsList.size(); index++){
-            if (menuOptionsList.get(index).getText().equalsIgnoreCase(menu)){
+        for (WebElement webElement : menuOptionsList) {
+            if (webElement.getText().equalsIgnoreCase(menu)) {
                 elementMethods.scrollDownElement(300);
-                LoggerUtility.info("The user scrolls down the page for seeing menu: "+menu);
-                elementMethods.clickElement(menuOptionsList.get(index));
-                LoggerUtility.info("The user scrolls down the page for seeing menu: "+menu);
+                LoggerUtility.info("The user scrolls down the page for seeing menu: " + menu);
+                elementMethods.clickElement(webElement);
+                LoggerUtility.info("The user scrolls down the page for seeing menu: " + menu);
                 break;
             }
         }

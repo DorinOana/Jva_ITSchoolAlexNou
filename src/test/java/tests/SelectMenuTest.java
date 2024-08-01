@@ -2,13 +2,12 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.AlertObject;
-import objectData.SelectMenuObject;
+import objectData.DataResource;
+import objectData.model.SelectMenuObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
 import pages.widgets.SelectMenuPage;
-import pages.widgets.ToolTipsPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
 
@@ -16,7 +15,7 @@ public class SelectMenuTest extends Hooks {
 
     @Test
     public void selectMenuMethod() {
-        SelectMenuObject selectMenuObject = new SelectMenuObject(testData);
+        SelectMenuObject selectMenuObject = new SelectMenuObject(DataResource.TEST_SELECT_MENU);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

@@ -1,7 +1,7 @@
 package pages.widgets;
 
 import logger.LoggerUtility;
-import objectData.SliderObject;
+import objectData.model.SliderObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

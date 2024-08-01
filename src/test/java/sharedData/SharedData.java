@@ -12,6 +12,7 @@ public class SharedData {
 
     public void initializeDriver(){
         driver = new BrowserFactory().getBrowserDriver();
+        LoggerUtility.info("The driver is opened with success");
     }
 
     public void quitDriver(){

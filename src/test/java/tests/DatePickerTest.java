@@ -2,12 +2,11 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.AutoCompleteObject;
-import objectData.DatePickerObject;
+import objectData.DataResource;
+import objectData.model.DatePickerObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
-import pages.widgets.AutoCompletePage;
 import pages.widgets.DatePickerPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
@@ -16,7 +15,7 @@ public class DatePickerTest extends Hooks {
 
     @Test
     public void datePickerMethod() {
-        DatePickerObject datePickerObject = new DatePickerObject(testData);
+        DatePickerObject datePickerObject = new DatePickerObject(DataResource.TEST_DATE_PICKER);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

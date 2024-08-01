@@ -18,12 +18,12 @@ public class CommonPage extends BasePage{
 
     public void enterSpecificSubMenu(String subMenu){
         elementMethods.visibilityOfElements(subMenuOptionsList);
-        for (int index = 0; index < subMenuOptionsList.size(); index++){
-            if (subMenuOptionsList.get(index).getText().equalsIgnoreCase(subMenu)){
+        for (WebElement webElement : subMenuOptionsList) {
+            if (webElement.getText().equalsIgnoreCase(subMenu)) {
                 elementMethods.scrollDownElement(300);
-                LoggerUtility.info("The user scrolls down the page for seeing subMenu: "+subMenu);
-                elementMethods.clickElementJS(subMenuOptionsList.get(index));
-                LoggerUtility.info("The user clicks on subMenu: "+subMenu);
+                LoggerUtility.info("The user scrolls down the page for seeing subMenu: " + subMenu);
+                elementMethods.clickElementJS(webElement);
+                LoggerUtility.info("The user clicks on subMenu: " + subMenu);
                 break;
             }
         }

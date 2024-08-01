@@ -11,10 +11,10 @@ public class BrowserFactory {
     public WebDriver getBrowserDriver() {
         String ci_cd = System.getProperty("ci_cd");
         String browser = System.getProperty("browser");
-        Configuration configuration = GeneralXml.CreateConfig(Configuration.class);
+        Configuration configuration = new GeneralXml().createConfig(Configuration.class);
 
         if(Boolean.parseBoolean(ci_cd)) {
-            configuration.driverConfig.setHeadless("--headless");
+            configuration.driverConfig.setHeadless(true);
         }
         else {
             browser = configuration.driverConfig.localBrowser;

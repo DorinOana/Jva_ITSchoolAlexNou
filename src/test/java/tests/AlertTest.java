@@ -2,7 +2,8 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.AlertObject;
+import objectData.DataResource;
+import objectData.model.AlertObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
@@ -14,7 +15,7 @@ public class AlertTest extends Hooks {
 
     @Test
     public void alertMethod() {
-        AlertObject alertObject = new AlertObject(testData);
+        AlertObject alertObject = new AlertObject(DataResource.TEST_ALERT);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_ALERTSFRAMEWINDOW);

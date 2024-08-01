@@ -19,7 +19,7 @@ public class DriverConfig {
     public String infoBars;
     @Setter
     @XmlElement(name="Headless")
-    public String headless;
+    public Boolean headless;
     @XmlElement(name="Extensions")
     public String extensions;
     @XmlElement(name="Resolution")

@@ -28,8 +28,8 @@ public class EdgeBrowserService implements BrowserService {
     @Override
     public Object getBrowserOptions(DriverConfig driverConfig) {
         EdgeOptions options = new EdgeOptions();
-        if (!driverConfig.headless.isEmpty()) {
-            options.addArguments(driverConfig.headless);
+        if ((driverConfig.headless)) {
+            options.addArguments("--headless=new");
         }
         options.addArguments(driverConfig.gpu);
         options.addArguments(driverConfig.resolution);

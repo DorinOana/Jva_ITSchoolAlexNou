@@ -1,7 +1,7 @@
 package database.queries;
 
 import lombok.SneakyThrows;
-import objectData.WebTableObject;
+import objectData.model.WebTableObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

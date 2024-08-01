@@ -2,11 +2,11 @@ package tests;
 
 import extentUtility.ExtentUtility;
 import extentUtility.ReportStep;
-import objectData.AutoCompleteObject;
+import objectData.DataResource;
+import objectData.model.AutoCompleteObject;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.MenuPageType;
-import pages.widgets.AccordionPage;
 import pages.widgets.AutoCompletePage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
@@ -15,7 +15,7 @@ public class AutoCompleteTest extends Hooks {
 
     @Test
     public void autoCompleteMethod() {
-        AutoCompleteObject autoCompleteObject = new AutoCompleteObject(testData);
+        AutoCompleteObject autoCompleteObject = new AutoCompleteObject(DataResource.TEST_AUTO_COMPLETE);
 
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

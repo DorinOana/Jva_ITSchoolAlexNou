@@ -2,7 +2,7 @@ package pages.elements;
 
 import database.queries.WebTable;
 import logger.LoggerUtility;
-import objectData.WebTableObject;
+import objectData.model.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

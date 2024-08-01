@@ -1,7 +1,7 @@
 package database.queries;
 
 import lombok.SneakyThrows;
-import objectData.PracticeFormObject;
+import objectData.model.PracticeFormObject;
 
 import java.sql.SQLException;
 import java.sql.Statement;
