@@ -16,6 +16,6 @@
         <Port>3306</Port>
         <Database>itschooldemoqadb</Database>
         <Username>root</Username>
-        <Password>root</Password>
+        <Password>root1234</Password>
     </DatabaseConfig>
 </configuration>
