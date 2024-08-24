@@ -30,4 +30,6 @@ public class DriverConfig {
     public String browserCheck;
     @XmlElement(name = "DevShm")
     public String devShm;
+    @XmlElement(name="SearchEngine")
+    public String searchEngine;
 }

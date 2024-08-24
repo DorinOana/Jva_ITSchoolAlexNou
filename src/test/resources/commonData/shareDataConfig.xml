@@ -11,11 +11,12 @@
         <Sandbox>--no-sandbox</Sandbox>
         <BrowserCheck>--no-default-browser-check</BrowserCheck>
         <DevShm>--disable-dev-shm-usage</DevShm>
+        <SearchEngine>--disable-search-engine-choice-screen</SearchEngine>
     </DriverConfig>
     <DatabaseConfig>
         <Port>3306</Port>
         <Database>itschooldemoqadb</Database>
         <Username>root</Username>
-        <Password>root</Password>
+        <Password>root1234</Password>
     </DatabaseConfig>
 </configuration>
