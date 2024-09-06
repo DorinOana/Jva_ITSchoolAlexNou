@@ -1,7 +1,7 @@
 package pages.elements;
 
 import database.queries.WebTable;
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import objectData.model.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

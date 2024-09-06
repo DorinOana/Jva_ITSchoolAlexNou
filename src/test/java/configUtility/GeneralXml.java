@@ -1,4 +1,4 @@
-package xmlFile;
+package configUtility;
 
 import lombok.SneakyThrows;
 

@@ -1,4 +1,4 @@
-package xmlFile.xmlNode;
+package configUtility.xmlNode;
 
 import lombok.Setter;
 

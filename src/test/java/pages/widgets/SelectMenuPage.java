@@ -1,6 +1,6 @@
 package pages.widgets;
 
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import objectData.model.SelectMenuObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

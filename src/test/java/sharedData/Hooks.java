@@ -1,7 +1,7 @@
 package sharedData;
 
 import extentUtility.ExtentUtility;
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;

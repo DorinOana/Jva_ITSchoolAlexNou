@@ -1,6 +1,6 @@
 package pages.widgets;
 
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import objectData.model.AutoCompleteObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

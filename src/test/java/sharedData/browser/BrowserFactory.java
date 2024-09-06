@@ -3,8 +3,8 @@ package sharedData.browser;
 import org.openqa.selenium.WebDriver;
 import sharedData.browser.service.ChromeBrowserService;
 import sharedData.browser.service.EdgeBrowserService;
-import xmlFile.GeneralXml;
-import xmlFile.xmlNode.Configuration;
+import configUtility.GeneralXml;
+import configUtility.xmlNode.Configuration;
 
 public class BrowserFactory {
 

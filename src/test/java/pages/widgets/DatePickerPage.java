@@ -1,6 +1,6 @@
 package pages.widgets;
 
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import objectData.model.DatePickerObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

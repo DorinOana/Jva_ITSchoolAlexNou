@@ -1,8 +1,8 @@
 package database;
 
 import lombok.SneakyThrows;
-import xmlFile.GeneralXml;
-import xmlFile.xmlNode.Configuration;
+import configUtility.GeneralXml;
+import configUtility.xmlNode.Configuration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

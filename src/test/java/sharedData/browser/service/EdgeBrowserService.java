@@ -1,13 +1,12 @@
 package sharedData.browser.service;
 
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import lombok.Getter;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import sharedData.browser.service.BrowserService;
-import xmlFile.xmlNode.DriverConfig;
+import configUtility.xmlNode.DriverConfig;
 
 import java.time.Duration;
 

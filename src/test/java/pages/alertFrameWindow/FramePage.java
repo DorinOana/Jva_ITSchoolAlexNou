@@ -1,6 +1,6 @@
 package pages.alertFrameWindow;
 
-import logger.LoggerUtility;
+import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

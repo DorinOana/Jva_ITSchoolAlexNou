@@ -1,6 +1,6 @@
 package sharedData.browser.service;
 
-import xmlFile.xmlNode.DriverConfig;
+import configUtility.xmlNode.DriverConfig;
 
 public interface BrowserService {
 
