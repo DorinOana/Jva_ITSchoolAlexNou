@@ -74,6 +74,7 @@ public class WebTablePage extends ElementsPage {
         validateTableSize(webTableObject.getWebTableEntriesCount());
         validateNewEntry(webTableObject);
         webTable.insertTableObject(webTableObject);
+        LoggerUtility.info("All the data are inserted with success into database");
     }
 
     private void validateTableSize(int expected){
