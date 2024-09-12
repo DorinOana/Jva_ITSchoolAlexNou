@@ -165,6 +165,8 @@ public class PracticeFormPage extends FormsPage {
     }
 
     private void validateFinalTableValues(PracticeFormObject practiceFormObject) {
+        elementMethods.visibilityOfElements(thankYouTableList);
+
         Assert.assertTrue(thankYouTableList.get(1).getText().contains("Student Name"));
         Assert.assertTrue(thankYouTableList.get(1).getText().contains(practiceFormObject.getFirstName()));
         Assert.assertTrue(thankYouTableList.get(1).getText().contains(practiceFormObject.getLastName()));

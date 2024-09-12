@@ -3,7 +3,7 @@
     <DriverConfig>
         <LocalBrowser>chrome</LocalBrowser>
         <Url>https://demoqa.com/</Url>
-        <Headless>false</Headless>
+        <Headless>true</Headless>
         <Gpu>--disable-gpu</Gpu>
         <Infobars>--disable-infobars</Infobars>
         <Extensions>--disable-extensions</Extensions>
