@@ -1,4 +1,4 @@
-name: Maven Package
+name: Custom suite pipeline
 
 on:
   workflow_dispatch:
@@ -67,7 +67,7 @@ jobs:
 
       - name: Publish suite results
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: SuiteResults
           path: |
