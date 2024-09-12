@@ -36,10 +36,10 @@ jobs:
       mysql:
         image: mysql
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: root234
         ports:
           - "3306:3306"
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        options: --health-cmd="mysqladmin ping -h 172.18.0.1" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - uses: actions/checkout@v3
@@ -60,6 +60,12 @@ jobs:
 
       - name: Run SQL file
         run: |
+          echo "Waiting for MySQL service to be ready..."
+          until mysqladmin ping -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} --silent; do
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
+          echo "Running SQL script..."
           mysql -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} -u ${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < itSchoolDBQueries.sql
 
       - name: Run ${{ github.event.inputs.suite }}
