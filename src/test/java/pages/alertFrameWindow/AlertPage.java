@@ -22,7 +22,7 @@ public class AlertPage extends AlertFrameWindowPage {
     private WebElement alertValueElement;
 
     public void dealAlertOkProcess() {
-        elementMethods.clickElement(alertOkElement);
+        elementMethods.clickElementJS(alertOkElement);
         LoggerUtility.info("The user clicks on alertOkElement");
 
         alertMethods.alertWithOk();
@@ -30,7 +30,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertDelayProcess() {
-        elementMethods.clickElement(alertDelayElement);
+        elementMethods.clickElementJS(alertDelayElement);
         LoggerUtility.info("The user clicks on alertDelayElement");
 
         alertMethods.alertWithOk();
@@ -38,7 +38,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertOkCancelProcess() {
-        elementMethods.clickElement(alertOkCancelElement);
+        elementMethods.clickElementJS(alertOkCancelElement);
         LoggerUtility.info("The user clicks on alertOkCancelElement");
 
         alertMethods.alertWithCancel();
