@@ -30,8 +30,13 @@ public class DBConnection {
         return instance;
     }
 
-    private static synchronized String getPreparedUrl(Configuration configuration){
-        return "jdbc:mysql://localhost:"+configuration.databaseConfig.port+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
+    private static String getPreparedUrl(Configuration configuration){
+        String ci_cd = System.getProperty("ci_cd");
+        if (Boolean.parseBoolean(ci_cd)){
+            return "jdbc:mysql://"+configuration.databaseConfig.remoteServer+":"+configuration.databaseConfig.port+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
+        } else {
+            return "jdbc:mysql://localhost:"+configuration.databaseConfig.port+"/"+configuration.databaseConfig.database+"?allowPublicKeyRetrieval=true&useSSL=false";
+        }
     }
 
     public Connection getConnection() {

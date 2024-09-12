@@ -4,18 +4,32 @@ on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Choose browser: chrome, edge, firefox'
+        description: 'Choose browser: chrome, edge'
         required: true
         default: 'chrome'
+        type: choice
+        options:
+          - 'chrome'
+          - 'edge'
       suite:
         description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
         required: true
         default: 'RegressionSuite'
+        type: choice
+        options:
+          - RegressionSuite
+          - FeaturesSuite
+
+env:
+  DB_HOST: 172.18.0.1   # Database host
+  DB_PORT: 3306         # Database port
+  DB_USER: root         # Database user
+  DB_PASSWORD: root1234 # Database password
 
 jobs:
-  build:
+  test:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     permissions: write-all
 
     services:
@@ -46,7 +60,7 @@ jobs:
 
       - name: Run SQL file
         run: |
-          mysql -h 127.0.0.1 -P 3306 -u root -proot < itSchoolDBQueries.sql
+          mysql -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} -u ${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < itSchoolDBQueries.sql
 
       - name: Run ${{ github.event.inputs.suite }}
         run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -DsuiteXmlFile=suites/${{ github.event.inputs.suite }} -PCustomSuite

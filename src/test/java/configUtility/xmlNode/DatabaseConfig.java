@@ -15,4 +15,6 @@ public class DatabaseConfig {
     public String username;
     @XmlElement(name="Password")
     public String password;
+    @XmlElement(name="RemoteServer")
+    public String remoteServer;
 }
