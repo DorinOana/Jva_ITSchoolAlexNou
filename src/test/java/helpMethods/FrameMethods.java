@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-@AllArgsConstructor
-public class FrameMethods {
+public class FrameMethods extends BaseMethods{
 
-    private WebDriver driver;
+    public FrameMethods(WebDriver driver) {
+        super(driver);
+    }
 
     public void switchFrameById (String text){
         driver.switchTo().frame(text);

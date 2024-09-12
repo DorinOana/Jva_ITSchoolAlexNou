@@ -21,6 +21,7 @@ public class ToolTipsPage extends WidgetsPage{
     private WebElement hoverMeFieldTextElement;
 
     public ToolTipsPage hoverButtonFieldProcess(){
+        elementMethods.waitForSeconds(2500);
         elementMethods.hoverElement(hoverMeButtonElement);
         LoggerUtility.info("The user moves the mouse on on hoverMeButtonElement element");
 

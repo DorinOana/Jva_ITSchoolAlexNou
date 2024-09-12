@@ -1,14 +1,14 @@
 package helpMethods;
 
-import lombok.AllArgsConstructor;
 import org.openqa.selenium.WebDriver;
 
 import java.util.ArrayList;
 
-@AllArgsConstructor
-public class TabMethods {
+public class TabMethods extends BaseMethods{
 
-    private WebDriver driver;
+    public TabMethods(WebDriver driver) {
+        super(driver);
+    }
 
     public Integer getNumberOfTabsOpened(){
         ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());

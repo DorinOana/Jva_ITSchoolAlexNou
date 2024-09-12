@@ -9,15 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class ElementMethods {
+public class ElementMethods extends BaseMethods {
 
-    private final WebDriver driver;
     private final WebDriverWait webDriverWait;
 
     public ElementMethods(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
+
 
     public void visibilityOfElement(WebElement element) {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));

@@ -1,17 +1,15 @@
 package helpMethods;
 
-import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 
-@AllArgsConstructor
-public class PageMethods {
+public class PageMethods extends BaseMethods{
 
-    private WebDriver driver;
+    public PageMethods(WebDriver driver) {
+        super(driver);
+    }
 
-    @SneakyThrows
     public void navigateToUrl(String url){
-        Thread.sleep(3500);
+        waitForSeconds(3500);
         driver.navigate().to(url);
     }
 }
