@@ -1,5 +1,6 @@
 package configUtility;
 
+import configUtility.xmlNode.Configuration;
 import lombok.SneakyThrows;
 
 import javax.xml.bind.JAXBContext;
@@ -7,12 +8,12 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
-public class GeneralXml {
+public class GeneralConfig {
 
     @SneakyThrows(JAXBException.class)
-    public <T> T createConfig(Class<T> klass)  {
-        JAXBContext jaxbContext = JAXBContext.newInstance(klass);
+    public Configuration createConfig() {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Configuration.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        return klass.cast(jaxbUnmarshaller.unmarshal(new File("src/test/resources/commonData/shareDataConfig.xml")));
+        return (Configuration) jaxbUnmarshaller.unmarshal(new File("atfConfig.xml"));
     }
 }

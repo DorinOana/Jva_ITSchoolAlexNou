@@ -39,7 +39,6 @@ public class Hooks extends SharedData{
 
     @AfterSuite
     public void mergeRegressionLogs(){
-        LoggerUtility.mergeLogFilesIntoOne();
         ExtentUtility.generateReport();
     }
 }

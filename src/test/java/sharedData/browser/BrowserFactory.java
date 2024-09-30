@@ -3,7 +3,7 @@ package sharedData.browser;
 import org.openqa.selenium.WebDriver;
 import sharedData.browser.service.ChromeBrowserService;
 import sharedData.browser.service.EdgeBrowserService;
-import configUtility.GeneralXml;
+import configUtility.GeneralConfig;
 import configUtility.xmlNode.Configuration;
 
 public class BrowserFactory {
@@ -11,7 +11,7 @@ public class BrowserFactory {
     public WebDriver getBrowserDriver() {
         String ci_cd = System.getProperty("ci_cd");
         String browser = System.getProperty("browser");
-        Configuration configuration = new GeneralXml().createConfig(Configuration.class);
+        Configuration configuration = new GeneralConfig().createConfig();
 
         if(Boolean.parseBoolean(ci_cd)) {
             configuration.driverConfig.setHeadless(true);

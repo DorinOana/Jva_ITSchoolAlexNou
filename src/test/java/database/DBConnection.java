@@ -1,7 +1,7 @@
 package database;
 
 import lombok.SneakyThrows;
-import configUtility.GeneralXml;
+import configUtility.GeneralConfig;
 import configUtility.xmlNode.Configuration;
 
 import java.sql.Connection;
@@ -19,7 +19,7 @@ public class DBConnection {
 
     @SneakyThrows(SQLException.class)
     private void createConnection() {
-        Configuration configuration = new GeneralXml().createConfig(Configuration.class);
+        Configuration configuration = new GeneralConfig().createConfig();
         con = DriverManager.getConnection(getPreparedUrl(configuration), configuration.databaseConfig.username, configuration.databaseConfig.password);
     }
 
