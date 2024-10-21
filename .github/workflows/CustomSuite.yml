@@ -1,24 +1,10 @@
 name: Custom suite pipeline
 
 on:
-  workflow_dispatch:
-    inputs:
-      browser:
-        description: 'Choose browser: chrome, edge'
-        required: true
-        default: 'chrome'
-        type: choice
-        options:
-          - 'chrome'
-          - 'edge'
-      suite:
-        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
-        required: true
-        default: 'RegressionSuite'
-        type: choice
-        options:
-          - RegressionSuite
-          - FeaturesSuite
+  #schedule:
+  # Run every night from Monday to Friday at 23:00
+  #- cron: '00 23 * * 1-5'
+  workflow_dispatch: # Allow manual trigger without parameters
 
 env:
   DB_HOST: 172.18.0.1   # Database host
@@ -77,5 +63,4 @@ jobs:
         with:
           name: SuiteResults
           path: |
-            target/logs/RegressionLogs.log
             target/extentReports

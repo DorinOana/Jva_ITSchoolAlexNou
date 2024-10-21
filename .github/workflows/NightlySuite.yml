@@ -1,0 +1,80 @@
+name: Nightly suite pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Choose browser: chrome, edge'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - 'chrome'
+          - 'edge'
+      suite:
+        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
+        required: true
+        default: 'RegressionSuite'
+        type: choice
+        options:
+          - RegressionSuite
+          - FeaturesSuite
+
+env:
+  DB_HOST: 172.18.0.1   # Database host
+  DB_PORT: 3306         # Database port
+  DB_USER: root         # Database user
+  DB_PASSWORD: root1234 # Database password
+
+jobs:
+  test:
+
+    runs-on: ubuntu-20.04
+    permissions: write-all
+
+    services:
+      mysql:
+        image: mysql
+        env:
+          MYSQL_ROOT_PASSWORD: root1234
+        ports:
+          - "3306:3306"
+        options: --health-cmd="mysqladmin ping -h 172.18.0.1" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Clear old artifacts
+        uses: kolpav/purge-artifacts-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          expire-in: 0days # Set this to 0 to delete all artifacts
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+      - name: Run SQL file
+        run: |
+          echo "Waiting for MySQL service to be ready..."
+          until mysqladmin ping -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} --silent; do
+            echo "Waiting for MySQL..."
+            sleep 5
+          done
+          echo "Running SQL script..."
+          mysql -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} -u ${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < itSchoolDBQueries.sql
+
+      - name: Run ${{ github.event.inputs.suite }}
+        run: mvn clean install -Dci_cd=true -Dbrowser=chrome -DsuiteXmlFile=suites/RegressionSuite -PCustomSuite
+
+      - name: Publish suite results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: SuiteResults
+          path: |
+            target/extentReports
