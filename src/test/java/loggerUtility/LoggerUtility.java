@@ -17,16 +17,10 @@ public class LoggerUtility {
     }
 
     public static synchronized void info(Object message){
-        logger.info("{}: {} {}", Thread.currentThread().getName(), getCallInfo(), message);
+        logger.info("{}: {}", Thread.currentThread().getName(), message);
     }
 
     public static synchronized void error(Object message){
-        logger.error("{}: {} {}", Thread.currentThread().getName(), getCallInfo(), message);
-    }
-
-    private static synchronized String getCallInfo() {
-        String className = Thread.currentThread().getStackTrace()[3].getClassName();
-        String methodName = Thread.currentThread().getStackTrace()[3].getMethodName();
-        return className + ":" + methodName + " ==> ";
+        logger.error("{}: {}", Thread.currentThread().getName(), message);
     }
 }
