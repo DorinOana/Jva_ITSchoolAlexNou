@@ -1,6 +1,5 @@
 package helpMethods;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 

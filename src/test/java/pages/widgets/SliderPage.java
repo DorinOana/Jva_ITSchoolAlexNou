@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.locators.SliderLocators;
 
 public class SliderPage extends WidgetsPage{
 
@@ -13,18 +14,14 @@ public class SliderPage extends WidgetsPage{
         super(driver);
     }
 
-    @FindBy(id = "sliderValue")
-    private WebElement sliderValueElement;
-    @FindBy(xpath = "//input[@type='range']")
-    private WebElement sliderElement;
+    public void interactWithSlider(SliderObject sliderObject){
+        WebElement sliderValueElement = driver.findElement(SliderLocators.sliderValueLocator);
+        var currentValue = sliderValueElement.getDomAttribute("value");
 
-    public SliderPage interactWithSlider(SliderObject sliderObject){
-        var currentValue = sliderValueElement.getAttribute("value");
         while (!currentValue.equals(sliderObject.getSliderValue())){
-            elementMethods.fillElement(sliderElement, Keys.ARROW_RIGHT);
-            currentValue = sliderValueElement.getAttribute("value");
+            elementMethods.fillLocator(SliderLocators.sliderLocator, Keys.ARROW_RIGHT);
+            currentValue = sliderValueElement.getDomAttribute("value");
         }
         LoggerUtility.info("The user moves the slider to value: " + sliderObject.getSliderValue());
-        return this;
     }
 }

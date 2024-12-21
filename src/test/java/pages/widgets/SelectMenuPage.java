@@ -4,8 +4,7 @@ import loggerUtility.LoggerUtility;
 import objectData.model.SelectMenuObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import pages.locators.SelectMenuLocators;
 
 public class SelectMenuPage extends WidgetsPage {
 
@@ -13,48 +12,35 @@ public class SelectMenuPage extends WidgetsPage {
         super(driver);
     }
 
-    @FindBy(xpath = "//div[text()='Select Option']")
-    private WebElement selectOptionElement;
-    @FindBy(xpath = "//div[text()='Select Title']")
-    private WebElement selectOneElement;
-    @FindBy(id = "oldSelectMenu")
-    private WebElement oldSelectElement;
-    @FindBy(xpath = "//b[text()='Multiselect drop down']/../..//div[@class=' css-1wy0on6']")
-    private WebElement multiSelectElement;
-
-    public SelectMenuPage interactWithSelectValue(SelectMenuObject selectMenuObject) {
-        elementMethods.clickElement(selectOptionElement);
+    public void interactWithSelectValue(SelectMenuObject selectMenuObject) {
+        elementMethods.clickLocator(SelectMenuLocators.selectOptionLocator);
         LoggerUtility.info("The user clicks on selectOptionElement element");
         By optionLocator = By.xpath("//*[text()='" + selectMenuObject.getSelectValue() + "']");
-        elementMethods.clickElement(driver.findElement(optionLocator));
+        elementMethods.clickElementJS(driver.findElement(optionLocator));
         LoggerUtility.info("The user clicks on " + selectMenuObject.getSelectValue() + " option");
-        return this;
     }
 
-    public SelectMenuPage interactWithSelectOne(SelectMenuObject selectMenuObject) {
-        elementMethods.clickElement(selectOneElement);
+    public void interactWithSelectOne(SelectMenuObject selectMenuObject) {
+        elementMethods.clickLocator(SelectMenuLocators.selectOneLocator);
         LoggerUtility.info("The user clicks on selectOneElement element");
         By optionLocator = By.xpath("//*[text()='" + selectMenuObject.getSelectOne() + "']");
-        elementMethods.clickElement(driver.findElement(optionLocator));
+        elementMethods.clickElementJS(driver.findElement(optionLocator));
         LoggerUtility.info("The user clicks on " + selectMenuObject.getSelectOne() + " option");
-        return this;
     }
 
-    public SelectMenuPage interactWithOldSelect(SelectMenuObject selectMenuObject) {
-        elementMethods.selectElement(oldSelectElement, selectMenuObject.getOldStyleMenu());
+    public void interactWithOldSelect(SelectMenuObject selectMenuObject) {
+        elementMethods.selectLocator(SelectMenuLocators.oldSelectLocator, selectMenuObject.getOldStyleMenu());
         LoggerUtility.info("The user selects from oldSelectElement the value " + selectMenuObject.getOldStyleMenu());
-        return this;
     }
 
-    public SelectMenuPage interactWithMultiSelect(SelectMenuObject selectMenuObject) {
-        elementMethods.scrollDownElement(400);
-        elementMethods.clickElement(multiSelectElement);
+    public void interactWithMultiSelect(SelectMenuObject selectMenuObject) {
+        elementMethods.scrollDownLocator(400);
+        elementMethods.clickLocator(SelectMenuLocators.multiSelectLocator);
         LoggerUtility.info("The user clicks on multiSelectElement element");
         for (String color : selectMenuObject.getMultiSelect()) {
             By optionLocator = By.xpath("//div[@class=' css-26l3qy-menu']//*[text()='" + color + "']");
-            elementMethods.clickElement(driver.findElement(optionLocator));
+            elementMethods.clickElementJS(driver.findElement(optionLocator));
             LoggerUtility.info("The user clicks on " + color + " option");
         }
-        return this;
     }
 }

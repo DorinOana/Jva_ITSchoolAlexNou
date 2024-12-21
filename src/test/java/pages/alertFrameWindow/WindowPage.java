@@ -4,6 +4,7 @@ import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.locators.WindowLocator;
 
 public class WindowPage extends AlertFrameWindowPage {
 
@@ -11,20 +12,14 @@ public class WindowPage extends AlertFrameWindowPage {
         super(driver);
     }
 
-    @FindBy(id = "tabButton")
-    private WebElement newTabElement;
-    @FindBy(id = "windowButton")
-    private WebElement newWindowElement;
-    @FindBy(id = "sampleHeading")
-    private WebElement sampleMessageElement;
-
     public void dealWithSingleTab() {
-        elementMethods.clickElement(newTabElement);
+        elementMethods.clickLocator(WindowLocator.newTabLocator);
         LoggerUtility.info("The user clicks on newTabElement");
 
         tabMethods.switchToASpecificTabByIndex(1);
         LoggerUtility.info("The user switches on second tab");
 
+        WebElement sampleMessageElement = driver.findElement(WindowLocator.sampleMessageLocator);
         System.out.println(sampleMessageElement.getText());
         LoggerUtility.info("The user interacts with sampleMessageElement");
 
@@ -36,12 +31,13 @@ public class WindowPage extends AlertFrameWindowPage {
     }
 
     public void dealWithSingleWindow() {
-        elementMethods.clickElement(newWindowElement);
+        elementMethods.clickLocator(WindowLocator.newWindowLocator);
         LoggerUtility.info("The user clicks on newWindowElement");
 
         tabMethods.switchToASpecificTabByIndex(1);
         LoggerUtility.info("The user switches on second tab");
 
+        WebElement sampleMessageElement = driver.findElement(WindowLocator.sampleMessageLocator);
         System.out.println(sampleMessageElement.getText());
         LoggerUtility.info("The user interacts with sampleMessageElement");
 

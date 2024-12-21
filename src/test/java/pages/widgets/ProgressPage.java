@@ -5,6 +5,7 @@ import objectData.model.ProgressObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.locators.ProgressLocators;
 
 public class ProgressPage extends WidgetsPage{
 
@@ -12,25 +13,19 @@ public class ProgressPage extends WidgetsPage{
         super(driver);
     }
 
-    @FindBy(id = "progressBar")
-    private WebElement progressBarElement;
-    @FindBy(xpath = "//div[@role='progressbar']")
-    private WebElement progressBarValueElement;
-    @FindBy(xpath = "//div[@id='progressBarContainer']/button")
-    private WebElement startStopButtonElement;
-
-    public ProgressPage interactWithProgress(ProgressObject progressObject){
+    public void interactWithProgress(ProgressObject progressObject){
+        WebElement progressBarValueElement = driver.findElement(ProgressLocators.progressBarValueLocator);
         var currentValue = progressBarValueElement.getText();
-        elementMethods.clickElement(startStopButtonElement);
+
+        elementMethods.clickLocatorJS(ProgressLocators.startStopButtonLocator);
         LoggerUtility.info("The user clicks on startStopButtonElement element");
 
         while (!currentValue.contains(progressObject.getProgressValue())){
             currentValue = progressBarValueElement.getText();
             if (currentValue.contains(progressObject.getProgressValue())){
-                elementMethods.clickElement(startStopButtonElement);
+                elementMethods.clickLocatorJS(ProgressLocators.startStopButtonLocator);
             }
         }
         LoggerUtility.info("The user stops the progress bar at value " + progressObject.getProgressValue());
-        return this;
     }
 }

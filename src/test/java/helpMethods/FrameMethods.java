@@ -1,6 +1,6 @@
 package helpMethods;
 
-import lombok.AllArgsConstructor;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -10,12 +10,8 @@ public class FrameMethods extends BaseMethods{
         super(driver);
     }
 
-    public void switchFrameById (String text){
-        driver.switchTo().frame(text);
-    }
-
-    public void switchFrameByElement(WebElement element){
-        driver.switchTo().frame(element);
+    public void switchFrameByElement(By locator){
+        driver.switchTo().frame(driver.findElement(locator));
     }
 
     public void switchToDefault() {

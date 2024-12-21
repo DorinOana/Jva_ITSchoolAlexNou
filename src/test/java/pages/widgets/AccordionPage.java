@@ -3,7 +3,7 @@ package pages.widgets;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import pages.locators.AccordionLocators;
 
 import java.util.List;
 
@@ -13,18 +13,17 @@ public class AccordionPage extends WidgetsPage{
         super(driver);
     }
 
-    @FindBy(css = ".accordion .card-header")
-    private List<WebElement> accordionHeaderList;
-    @FindBy(css = ".accordion .card-body")
-    private List<WebElement> accordionBodyList;
-
-    public AccordionPage interactWithAccordion(){
+    public void interactWithAccordion(){
+        List<WebElement> accordionHeaderList = elementMethods.getAllElements(AccordionLocators.accordionHeaderListLocator, true);
         for (int index = 0; index<accordionHeaderList.size(); index++){
-            elementMethods.clickElementJS(accordionHeaderList.get(index));
-            LoggerUtility.info("The user clicks on " + index + " header option from accordion");
+            if (index>0) {
+                elementMethods.clickElement(accordionHeaderList.get(index));
+                LoggerUtility.info("The user clicks on " + index + " header option from accordion");
+            }
+
+            List<WebElement> accordionBodyList = elementMethods.getAllElements(AccordionLocators.accordionBodyListLocator, false);
             System.out.println(accordionBodyList.get(index).getText());
             LoggerUtility.info("The user prints the text from " + index + " header option");
         }
-        return this;
     }
 }

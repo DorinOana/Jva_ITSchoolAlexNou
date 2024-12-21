@@ -24,6 +24,5 @@ public class BasePage {
         alertMethods = new AlertMethods(driver);
         tabMethods = new TabMethods(driver);
         pageMethods = new PageMethods(driver);
-        PageFactory.initElements(driver, this);
     }
 }

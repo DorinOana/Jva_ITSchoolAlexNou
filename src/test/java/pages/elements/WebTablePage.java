@@ -7,68 +7,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import pages.locators.WebTableLocator;
 
 import java.util.List;
 
 public class WebTablePage extends ElementsPage {
 
-    private WebTable webTable;
+    private final WebTable webTable;
 
     public WebTablePage(WebDriver driver) {
         super(driver);
         webTable = new WebTable();
     }
 
-    @FindBy(id = "addNewRecordButton")
-    private WebElement addNewEntryElement;
-    @FindBy(id = "firstName")
-    private WebElement firstNameElement;
-    @FindBy(id = "lastName")
-    private WebElement lastNameElement;
-    @FindBy(id = "userEmail")
-    private WebElement emailElement;
-    @FindBy(id = "age")
-    private WebElement ageElement;
-    @FindBy(id = "salary")
-    private WebElement salaryElement;
-    @FindBy(id = "department")
-    private WebElement departmentElement;
-    @FindBy(id = "submit")
-    private WebElement submitElement;
-    @FindBy(xpath = "//div[@class='rt-tbody']//div[@class='rt-tr -odd' or @class='rt-tr -even']")
-    private List<WebElement> tableRowsList;
-    @FindBy(xpath = "//span[@title='Edit']")
-    private List<WebElement> tableEditButtonsList;
-    @FindBy(xpath = "//span[@title='Delete']")
-    private List<WebElement> tableDeleteButtonsList;
-
     public void addEntryIntoTable(WebTableObject webTableObject){
-        webTableObject.setWebTableEntriesCount(tableRowsList.size());
-
-        elementMethods.clickElement(addNewEntryElement);
+        elementMethods.clickLocator(WebTableLocator.addNewEntryLocator);
         LoggerUtility.info("The user clicks on addNewEntryElement");
 
-        elementMethods.fillElement(firstNameElement, webTableObject.getFirstName());
+        elementMethods.fillLocator(WebTableLocator.firstNameLocator, webTableObject.getFirstName());
         LoggerUtility.info("The user fills firstNameElement field with "+webTableObject.getFirstName()+" value");
 
-        elementMethods.fillElement(lastNameElement, webTableObject.getLastName());
+        elementMethods.fillLocator(WebTableLocator.lastNameLocator, webTableObject.getLastName());
         LoggerUtility.info("The user fills lastNameElement field with "+webTableObject.getLastName()+" value");
 
-        elementMethods.fillElement(emailElement, webTableObject.getEmail());
+        elementMethods.fillLocator(WebTableLocator.emailLocator, webTableObject.getEmail());
         LoggerUtility.info("The user fills emailElement field with "+webTableObject.getEmail()+" value");
 
-        elementMethods.fillElement(ageElement, webTableObject.getAge());
+        elementMethods.fillLocator(WebTableLocator.ageLocator, webTableObject.getAge());
         LoggerUtility.info("The user fills ageElement field with "+webTableObject.getAge()+" value");
 
-        elementMethods.fillElement(salaryElement, webTableObject.getSalary());
+        elementMethods.fillLocator(WebTableLocator.salaryLocator, webTableObject.getSalary());
         LoggerUtility.info("The user fills salaryElement field with "+webTableObject.getSalary()+" value");
 
-        elementMethods.fillElement(departmentElement, webTableObject.getDepartment());
+        elementMethods.fillLocator(WebTableLocator.departmentLocator, webTableObject.getDepartment());
         LoggerUtility.info("The user fills departmentElement field with "+webTableObject.getDepartment()+" value");
 
-        elementMethods.clickElement(submitElement);
+        elementMethods.clickLocator(WebTableLocator.submitLocator);
         LoggerUtility.info("The user clicks on submitElement");
 
+        List<WebElement> tableRowsList = elementMethods.getAllElements(WebTableLocator.tableRowsListLocator, true);
         webTableObject.setWebTableEntriesCount(tableRowsList.size());
 
         validateTableSize(webTableObject.getWebTableEntriesCount());
@@ -78,11 +55,15 @@ public class WebTablePage extends ElementsPage {
     }
 
     private void validateTableSize(int expected){
+        List<WebElement> tableRowsList = elementMethods.getAllElements(WebTableLocator.tableRowsListLocator, true);
+
         Assert.assertEquals(tableRowsList.size(), expected);
         LoggerUtility.info("The user validates the size of table: "+expected);
     }
 
     private void validateNewEntry(WebTableObject webTableObject){
+        List<WebElement> tableRowsList = elementMethods.getAllElements(WebTableLocator.tableRowsListLocator, true);
+
         String newEntryTable = tableRowsList.get(webTableObject.getWebTableEntriesCount() - 1).getText();
         Assert.assertTrue(newEntryTable.contains(webTableObject.getFirstName()));
         LoggerUtility.info("The user validates the presence of "+webTableObject.getFirstName()+" value");
@@ -104,32 +85,33 @@ public class WebTablePage extends ElementsPage {
     }
 
     public void modifyNewEntry(WebTableObject webTableObject){
-
         webTableObject.setDepartment("programming");
         webTableObject.setAge("29");
 
-        elementMethods.clickElementJS(tableEditButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
+        List<WebElement> tableRowsList = elementMethods.getAllElements(WebTableLocator.tableEditButtonsListLocator, true);
+
+        elementMethods.clickElementJS(tableRowsList.get(webTableObject.getWebTableEntriesCount() - 1));
         LoggerUtility.info("The user clicks on editNewEntryElement");
 
-        elementMethods.clearFillElement(firstNameElement, webTableObject.getFirstName());
+        elementMethods.clearFillLocator(WebTableLocator.firstNameLocator, webTableObject.getFirstName());
         LoggerUtility.info("The user fills firstNameElement field with "+webTableObject.getFirstName()+" value");
 
-        elementMethods.clearFillElement(lastNameElement, webTableObject.getLastName());
+        elementMethods.clearFillLocator(WebTableLocator.lastNameLocator, webTableObject.getLastName());
         LoggerUtility.info("The user fills lastNameElement field with "+webTableObject.getLastName()+" value");
 
-        elementMethods.clearFillElement(emailElement, webTableObject.getEmail());
+        elementMethods.clearFillLocator(WebTableLocator.emailLocator, webTableObject.getEmail());
         LoggerUtility.info("The user fills emailElement field with "+webTableObject.getEmail()+" value");
 
-        elementMethods.clearFillElement(ageElement, webTableObject.getAge());
+        elementMethods.clearFillLocator(WebTableLocator.ageLocator, webTableObject.getAge());
         LoggerUtility.info("The user fills ageElement field with "+webTableObject.getAge()+" value");
 
-        elementMethods.clearFillElement(salaryElement, webTableObject.getSalary());
+        elementMethods.clearFillLocator(WebTableLocator.salaryLocator, webTableObject.getSalary());
         LoggerUtility.info("The user fills salaryElement field with "+webTableObject.getSalary()+" value");
 
-        elementMethods.clearFillElement(departmentElement, webTableObject.getDepartment());
+        elementMethods.clearFillLocator(WebTableLocator.departmentLocator, webTableObject.getDepartment());
         LoggerUtility.info("The user fills departmentElement field with "+webTableObject.getDepartment()+" value");
 
-        elementMethods.clickElement(submitElement);
+        elementMethods.clickLocator(WebTableLocator.submitLocator);
         LoggerUtility.info("The user clicks on submitElement");
 
         validateTableSize(webTableObject.getWebTableEntriesCount());
@@ -140,7 +122,9 @@ public class WebTablePage extends ElementsPage {
     }
 
     public void deleteNewEntry(WebTableObject webTableObject){
-        elementMethods.clickElementJS(tableDeleteButtonsList.get(webTableObject.getWebTableEntriesCount() - 1));
+        List<WebElement> tableRowsList = elementMethods.getAllElements(WebTableLocator.tableDeleteButtonsListLocator, true);
+
+        elementMethods.clickElementJS(tableRowsList.get(webTableObject.getWebTableEntriesCount() - 1));
         LoggerUtility.info("The user clicks on deleteNewEntryElement");
         validateTableSize(webTableObject.getWebTableEntriesCount() - 1);
     }

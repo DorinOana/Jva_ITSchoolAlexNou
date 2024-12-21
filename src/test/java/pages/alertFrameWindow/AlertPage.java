@@ -3,8 +3,7 @@ package pages.alertFrameWindow;
 import loggerUtility.LoggerUtility;
 import objectData.model.AlertObject;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import pages.locators.AlertLocators;
 
 public class AlertPage extends AlertFrameWindowPage {
 
@@ -12,17 +11,8 @@ public class AlertPage extends AlertFrameWindowPage {
         super(driver);
     }
 
-    @FindBy(id = "alertButton")
-    private WebElement alertOkElement;
-    @FindBy(id = "timerAlertButton")
-    private WebElement alertDelayElement;
-    @FindBy(id = "confirmButton")
-    private WebElement alertOkCancelElement;
-    @FindBy(id = "promtButton")
-    private WebElement alertValueElement;
-
     public void dealAlertOkProcess() {
-        elementMethods.clickElementJS(alertOkElement);
+        elementMethods.clickLocatorJS(AlertLocators.alertOkLocator);
         LoggerUtility.info("The user clicks on alertOkElement");
 
         alertMethods.alertWithOk();
@@ -30,7 +20,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertDelayProcess() {
-        elementMethods.clickElementJS(alertDelayElement);
+        elementMethods.clickLocatorJS(AlertLocators.alertDelayLocator);
         LoggerUtility.info("The user clicks on alertDelayElement");
 
         alertMethods.alertWithOk();
@@ -38,7 +28,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertOkCancelProcess() {
-        elementMethods.clickElementJS(alertOkCancelElement);
+        elementMethods.clickLocatorJS(AlertLocators.alertOkCancelLocator);
         LoggerUtility.info("The user clicks on alertOkCancelElement");
 
         alertMethods.alertWithCancel();
@@ -46,7 +36,7 @@ public class AlertPage extends AlertFrameWindowPage {
     }
 
     public void dealAlertValue(AlertObject alertObject) {
-        elementMethods.clickElementJS(alertValueElement);
+        elementMethods.clickLocatorJS(AlertLocators.alertValueLocator);
         LoggerUtility.info("The user clicks on alertValueElement");
 
         alertMethods.alertWithText(alertObject.getAlertValue());

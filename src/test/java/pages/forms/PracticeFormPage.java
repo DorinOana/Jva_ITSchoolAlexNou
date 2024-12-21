@@ -6,8 +6,8 @@ import objectData.model.PracticeFormObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import pages.locators.PracticeFormLocators;
 
 import java.util.List;
 
@@ -20,61 +20,20 @@ public class PracticeFormPage extends FormsPage {
         practiceFormTable = new PracticeFormTable();
     }
 
-    @FindBy(id = "firstName")
-    private WebElement firstNameElement;
-    @FindBy(id = "lastName")
-    private WebElement lastNameElement;
-    @FindBy(id = "userEmail")
-    private WebElement emailElement;
-    @FindBy(xpath = "//label[contains(@for,'gender')]")
-    private List<WebElement> genderOptionsList;
-    @FindBy(id = "userNumber")
-    private WebElement numberElement;
-    @FindBy(id = "subjectsInput")
-    private WebElement subjectsElement;
-    @FindBy(xpath = "//label[contains(@for,'hobbies')]")
-    private List<WebElement> hobbiesOptionsList;
-    @FindBy(id = "currentAddress")
-    private WebElement addressElement;
-    @FindBy(xpath = "//div[text()='Select State']")
-    private WebElement stateElement;
-    @FindBy(id = "react-select-3-input")
-    private WebElement stateInputElement;
-    @FindBy(xpath = "//div[text()='Select City']")
-    private WebElement cityElement;
-    @FindBy(id = "react-select-4-input")
-    private WebElement cityInputElement;
-    @FindBy(id = "submit")
-    private WebElement submitElement;
-    @FindBy(id = "example-modal-sizes-title-lg")
-    private WebElement successMessageElement;
-    @FindBy(css = ".table tr")
-    private List<WebElement> thankYouTableList;
-    @FindBy(id = "closeLargeModal")
-    private WebElement closeElement;
-    @FindBy(xpath = "//div[@class='react-datepicker__month']//div[not(contains(@class, 'day--outside-month')) and @role='option']")
-    private List<WebElement> dateDropDownDaysList;
-    @FindBy(id = "dateOfBirthInput")
-    private WebElement dateOfBirthElement;
-    @FindBy(css = ".react-datepicker__month-select")
-    private WebElement dateOfBirthMonthElement;
-    @FindBy(css = ".react-datepicker__year-select")
-    private WebElement dateOfBirthYearElement;
-
     public void fillEntireForm(PracticeFormObject practiceFormObject) {
-        elementMethods.fillElement(firstNameElement, practiceFormObject.getFirstName());
+        elementMethods.fillLocator(PracticeFormLocators.firstNameLocator, practiceFormObject.getFirstName());
         LoggerUtility.info("The user fills firstNameElement field with " + practiceFormObject.getFirstName() + " value");
 
-        elementMethods.fillElement(lastNameElement, practiceFormObject.getLastName());
+        elementMethods.fillLocator(PracticeFormLocators.lastNameLocator, practiceFormObject.getLastName());
         LoggerUtility.info("The user fills lastNameElement field with " + practiceFormObject.getLastName() + " value");
 
-        elementMethods.fillElement(emailElement, practiceFormObject.getEmail());
+        elementMethods.fillLocator(PracticeFormLocators.emailLocator, practiceFormObject.getEmail());
         LoggerUtility.info("The user fills emailElement field with " + practiceFormObject.getEmail() + " value");
 
         fillGender(practiceFormObject.getGender());
         LoggerUtility.info("The user fills genderElement field with " + practiceFormObject.getGender() + " value");
 
-        elementMethods.fillElement(numberElement, practiceFormObject.getMobile());
+        elementMethods.fillLocator(PracticeFormLocators.numberLocator, practiceFormObject.getMobile());
         LoggerUtility.info("The user fills numberElement field with " + practiceFormObject.getMobile() + " value");
 
         fillSubjects(practiceFormObject.getSubjects());
@@ -86,7 +45,7 @@ public class PracticeFormPage extends FormsPage {
         fillDateOfBirth(practiceFormObject.getDateOfBirth());
         LoggerUtility.info("The user fills dateOfBirthElement field with " + practiceFormObject.getDateOfBirth() + " value");
 
-        elementMethods.fillElement(addressElement, practiceFormObject.getAddress());
+        elementMethods.fillLocator(PracticeFormLocators.addressLocator, practiceFormObject.getAddress());
         LoggerUtility.info("The user fills addressElement field with " + practiceFormObject.getAddress() + " value");
 
         fillState(practiceFormObject.getState());
@@ -95,7 +54,7 @@ public class PracticeFormPage extends FormsPage {
         fillCity(practiceFormObject.getCity());
         LoggerUtility.info("The user fills cityElement field with " + practiceFormObject.getCity() + " value");
 
-        elementMethods.clickElementJS(submitElement);
+        elementMethods.clickLocatorJS(PracticeFormLocators.submitLocator);
         LoggerUtility.info("The user clicks on submitElement field");
 
         validateFinalTableValues(practiceFormObject);
@@ -104,59 +63,61 @@ public class PracticeFormPage extends FormsPage {
     }
 
     private void fillGender(String value) {
+        List<WebElement> genderOptionsList = elementMethods.getAllElements(PracticeFormLocators.genderOptionsListLocator, true);
         switch (value) {
             case "Male":
-                elementMethods.clickElement(genderOptionsList.get(0));
+                elementMethods.clickElementJS(genderOptionsList.get(0));
                 break;
             case "Female":
-                elementMethods.clickElement(genderOptionsList.get(1));
+                elementMethods.clickElementJS(genderOptionsList.get(1));
                 break;
             case "Other":
-                elementMethods.clickElement(genderOptionsList.get(2));
+                elementMethods.clickElementJS(genderOptionsList.get(2));
                 break;
         }
     }
 
     private void fillSubjects(String value) {
-        elementMethods.fillElement(subjectsElement, value);
-        elementMethods.fillElement(subjectsElement, String.valueOf(Keys.ENTER));
+        elementMethods.fillLocator(PracticeFormLocators.subjectsLocator, value);
+        elementMethods.fillLocator(PracticeFormLocators.subjectsLocator, String.valueOf(Keys.ENTER));
     }
 
     private void fillHobbies(String value) {
-        elementMethods.scrollDownElement(500);
+        elementMethods.scrollDownLocator(500);
+        List<WebElement> hobbiesOptionsList = elementMethods.getAllElements(PracticeFormLocators.hobbiesOptionsListLocator, true);
         switch (value) {
             case "Sports":
-                elementMethods.clickElement(hobbiesOptionsList.get(0));
+                elementMethods.clickElementJS(hobbiesOptionsList.get(0));
                 break;
             case "Reading":
-                elementMethods.clickElement(hobbiesOptionsList.get(1));
+                elementMethods.clickElementJS(hobbiesOptionsList.get(1));
                 break;
             case "Music":
-                elementMethods.clickElement(hobbiesOptionsList.get(2));
+                elementMethods.clickElementJS(hobbiesOptionsList.get(2));
                 break;
         }
     }
 
     private void fillState(String value) {
-        elementMethods.clickElementJS(stateElement);
-        elementMethods.fillElement(stateInputElement, value);
-        elementMethods.fillElement(stateInputElement, String.valueOf(Keys.ENTER));
+        elementMethods.clickLocatorJS(PracticeFormLocators.stateLocator);
+        elementMethods.fillLocator(PracticeFormLocators.stateInputLocator, value);
+        elementMethods.fillLocator(PracticeFormLocators.stateInputLocator, String.valueOf(Keys.ENTER));
     }
 
     private void fillCity(String value) {
-        elementMethods.clickElementJS(cityElement);
-        elementMethods.fillElement(cityInputElement, value);
-        elementMethods.fillElement(cityInputElement, String.valueOf(Keys.ENTER));
+        elementMethods.clickLocatorJS(PracticeFormLocators.cityLocator);
+        elementMethods.fillLocator(PracticeFormLocators.cityInputLocator, value);
+        elementMethods.fillLocator(PracticeFormLocators.cityInputLocator, String.valueOf(Keys.ENTER));
     }
 
     private void fillDateOfBirth(String value) {
         String[] splitDate = value.split(" ");
 
-        elementMethods.clickElement(dateOfBirthElement);
-        elementMethods.selectElement(dateOfBirthMonthElement, splitDate[1]);
-        elementMethods.selectElement(dateOfBirthYearElement, splitDate[2]);
+        elementMethods.clickLocator(PracticeFormLocators.dateOfBirthLocator);
+        elementMethods.selectLocator(PracticeFormLocators.dateOfBirthMonthLocator, splitDate[1]);
+        elementMethods.selectLocator(PracticeFormLocators.dateOfBirthYearLocator, splitDate[2]);
 
-        String proba = dateDropDownDaysList.get(0).getText();
+        List<WebElement> dateDropDownDaysList = elementMethods.getAllElements(PracticeFormLocators.dateDropDownDaysListLocator, true);
         dateDropDownDaysList.stream()
                 .filter(element -> element.getText().equals(splitDate[0]))
                 .findFirst()
@@ -165,7 +126,7 @@ public class PracticeFormPage extends FormsPage {
     }
 
     private void validateFinalTableValues(PracticeFormObject practiceFormObject) {
-        elementMethods.visibilityOfElements(thankYouTableList);
+        List<WebElement> thankYouTableList = elementMethods.getAllElements(PracticeFormLocators.thankYouTableListLocator, true);
 
         Assert.assertTrue(thankYouTableList.get(1).getText().contains("Student Name"));
         Assert.assertTrue(thankYouTableList.get(1).getText().contains(practiceFormObject.getFirstName()));
@@ -206,6 +167,6 @@ public class PracticeFormPage extends FormsPage {
         LoggerUtility.info("The user validates the presence of " + practiceFormObject.getState() + " value");
         LoggerUtility.info("The user validates the presence of " + practiceFormObject.getCity() + " value");
 
-        elementMethods.clickElementJS(closeElement);
+        elementMethods.clickLocatorJS(PracticeFormLocators.closeLocator);
     }
 }
