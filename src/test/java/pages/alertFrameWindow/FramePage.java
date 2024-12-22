@@ -3,7 +3,7 @@ package pages.alertFrameWindow;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.locators.FrameLocators;
+import pageLocators.alertFrameWindow.FrameLocators;
 
 public class FramePage extends AlertFrameWindowPage{
 

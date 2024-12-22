@@ -4,8 +4,7 @@ import loggerUtility.LoggerUtility;
 import objectData.model.ProgressObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pages.locators.ProgressLocators;
+import pageLocators.widgets.ProgressLocators;
 
 public class ProgressPage extends WidgetsPage{
 

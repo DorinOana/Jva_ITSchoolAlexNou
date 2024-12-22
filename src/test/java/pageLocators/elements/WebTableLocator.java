@@ -1,7 +1,6 @@
-package pages.locators;
+package pageLocators.elements;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
 
 public class WebTableLocator {
     public static final By addNewEntryLocator = By.id("addNewRecordButton");

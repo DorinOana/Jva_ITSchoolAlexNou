@@ -2,9 +2,7 @@ package pages.widgets;
 
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pages.locators.ToolTipsLocators;
+import pageLocators.widgets.ToolTipsLocators;
 
 public class ToolTipsPage extends WidgetsPage{
 

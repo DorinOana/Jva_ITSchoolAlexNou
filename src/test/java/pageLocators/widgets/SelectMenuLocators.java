@@ -1,7 +1,6 @@
-package pages.locators;
+package pageLocators.widgets;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
 
 public class SelectMenuLocators {
     public static final By selectOptionLocator = By.xpath("//div[text()='Select Option']");

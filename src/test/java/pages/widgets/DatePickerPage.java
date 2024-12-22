@@ -5,8 +5,7 @@ import objectData.model.DatePickerObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pages.locators.DatePickerLocators;
+import pageLocators.widgets.DatePickerLocators;
 
 import java.util.List;
 

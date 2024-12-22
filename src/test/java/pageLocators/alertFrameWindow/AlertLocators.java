@@ -1,4 +1,4 @@
-package pages.locators;
+package pageLocators.alertFrameWindow;
 
 import org.openqa.selenium.By;
 

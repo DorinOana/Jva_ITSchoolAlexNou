@@ -7,7 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import pages.locators.PracticeFormLocators;
+import pageLocators.forms.PracticeFormLocators;
 
 import java.util.List;
 

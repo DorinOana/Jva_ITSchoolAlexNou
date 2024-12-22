@@ -1,4 +1,4 @@
-package pages.locators;
+package pageLocators.forms;
 
 import org.openqa.selenium.By;
 

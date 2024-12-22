@@ -3,8 +3,7 @@ package pages;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pages.locators.CommonLocators;
+import pageLocators.CommonLocators;
 
 import java.util.List;
 

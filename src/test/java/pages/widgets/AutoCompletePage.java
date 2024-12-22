@@ -5,9 +5,8 @@ import objectData.model.AutoCompleteObject;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import pages.locators.AutoCompleteLocators;
+import pageLocators.widgets.AutoCompleteLocators;
 
 import java.util.List;
 import java.util.stream.Collectors;

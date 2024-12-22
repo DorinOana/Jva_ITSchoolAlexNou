@@ -3,8 +3,7 @@ package pages.alertFrameWindow;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pages.locators.WindowLocator;
+import pageLocators.alertFrameWindow.WindowLocator;
 
 public class WindowPage extends AlertFrameWindowPage {
 

@@ -3,7 +3,7 @@ package pages.widgets;
 import loggerUtility.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.locators.AccordionLocators;
+import pageLocators.widgets.AccordionLocators;
 
 import java.util.List;
 

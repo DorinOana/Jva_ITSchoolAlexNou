@@ -5,9 +5,8 @@ import loggerUtility.LoggerUtility;
 import objectData.model.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import pages.locators.WebTableLocator;
+import pageLocators.elements.WebTableLocator;
 
 import java.util.List;
 

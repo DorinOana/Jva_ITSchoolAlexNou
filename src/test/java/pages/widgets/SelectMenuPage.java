@@ -4,7 +4,7 @@ import loggerUtility.LoggerUtility;
 import objectData.model.SelectMenuObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.locators.SelectMenuLocators;
+import pageLocators.widgets.SelectMenuLocators;
 
 public class SelectMenuPage extends WidgetsPage {
 

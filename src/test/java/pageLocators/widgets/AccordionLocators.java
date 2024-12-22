@@ -1,4 +1,4 @@
-package pages.locators;
+package pageLocators.widgets;
 
 import org.openqa.selenium.By;
 
