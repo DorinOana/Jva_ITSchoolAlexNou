@@ -1,4 +1,4 @@
-name: Nightly suite pipeline
+name: Regression suite pipeline
 
 on:
   workflow_dispatch:
