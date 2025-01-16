@@ -17,7 +17,7 @@ public class AccordionPage extends WidgetsPage{
         List<WebElement> accordionHeaderList = elementMethods.getAllElements(AccordionLocators.accordionHeaderListLocator, true);
         for (int index = 0; index<accordionHeaderList.size(); index++){
             if (index>0) {
-                elementMethods.clickElement(accordionHeaderList.get(index));
+                elementMethods.clickElementJS(accordionHeaderList.get(index));
                 LoggerUtility.info("The user clicks on " + index + " header option from accordion");
             }
 
