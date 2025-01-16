@@ -1,4 +1,4 @@
-name: Regression suite pipeline
+name: Custom suite pipeline
 
 on:
   workflow_dispatch:
@@ -11,6 +11,10 @@ on:
         options:
           - 'chrome'
           - 'edge'
+      suite:
+        description: 'Provide suite tag or tags: '
+        required: true
+        default: '@elements,@alertsFrameWindows'
       workers:
         description: 'Specify number of workers:'
         required: true
@@ -69,10 +73,11 @@ jobs:
         run: |
           echo "### Inputs Provided" >> $GITHUB_STEP_SUMMARY
           echo "- **Browser**: \`${{ github.event.inputs.browser }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Suite**: \`${{ github.event.inputs.suite }}\`" >> $GITHUB_STEP_SUMMARY
           echo "- **Workers**: \`${{ github.event.inputs.workers }}\`" >> $GITHUB_STEP_SUMMARY
 
-      - name: Run regression suite
-        run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -Dgroups=@regression -Dthreads=${{ github.event.inputs.workers }}
+      - name: Run ${{ github.event.inputs.suite }} suite
+        run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -Dgroups=${{ github.event.inputs.suite }} -Dthreads=${{ github.event.inputs.workers }}
 
       - name: Publish suite results
         if: always()
