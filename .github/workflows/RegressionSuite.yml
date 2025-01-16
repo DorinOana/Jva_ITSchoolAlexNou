@@ -1,24 +1,21 @@
-name: Nightly suite pipeline
+name: Regression suite pipeline
 
 on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Choose browser: chrome, edge'
+        description: 'Choose browser:'
         required: true
         default: 'chrome'
         type: choice
         options:
           - 'chrome'
           - 'edge'
-      suite:
-        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
+      workers:
+        description: 'Specify number of workers:'
         required: true
-        default: 'RegressionSuite'
-        type: choice
-        options:
-          - RegressionSuite
-          - FeaturesSuite
+        default: 2
+        type: number
 
 env:
   DB_HOST: 172.18.0.1   # Database host
