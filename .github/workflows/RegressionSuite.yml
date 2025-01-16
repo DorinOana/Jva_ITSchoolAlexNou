@@ -1,21 +1,24 @@
-name: Regression suite pipeline
+name: Nightly suite pipeline
 
 on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Choose browser:'
+        description: 'Choose browser: chrome, edge'
         required: true
         default: 'chrome'
         type: choice
         options:
           - 'chrome'
           - 'edge'
-      workers:
-        description: 'Choose number of workers(1-4):'
+      suite:
+        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
         required: true
-        default: 2
-        type: number
+        default: 'RegressionSuite'
+        type: choice
+        options:
+          - RegressionSuite
+          - FeaturesSuite
 
 env:
   DB_HOST: 172.18.0.1   # Database host
@@ -66,11 +69,11 @@ jobs:
           mysql -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} -u ${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < itSchoolDBQueries.sql
 
       - name: Run ${{ github.event.inputs.suite }}
-        run: mvn clean install -Dci_cd=true -Dbrowser=chrome -DsuiteXmlFile=suites/RegressionSuite -PCustomSuite
+        run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -Dgroups=@regression -Dthreads=${{ github.event.inputs.workers }}
 
       - name: Publish suite results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: SuiteResults
           path: |
