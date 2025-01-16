@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.forms.FormsPage;
 import pages.forms.PracticeFormPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class PracticeFormTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.FORMS_SUITE})
     public void practiceFormMethod() {
         PracticeFormObject practiceFormObject = new PracticeFormObject(DataResource.TEST_PRACTICE_FORM);
 

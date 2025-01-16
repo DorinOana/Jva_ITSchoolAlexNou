@@ -12,12 +12,12 @@ public class Hooks extends SharedData{
 
     public String testName;
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void initiateTestReport(){
         ExtentUtility.initiateReport();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initializeObjects(){
         testName = this.getClass().getSimpleName();
         LoggerUtility.startTestCase(testName);
@@ -26,7 +26,7 @@ public class Hooks extends SharedData{
         initializeDriver();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void closeBrowser(ITestResult result){
         if(result.getStatus() == ITestResult.FAILURE){
             ExtentUtility.attachTestLog(testName, result.getThrowable().getMessage(), getDriver());
@@ -37,7 +37,7 @@ public class Hooks extends SharedData{
         LoggerUtility.endTestCase(testName);
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void mergeRegressionLogs(){
         ExtentUtility.generateReport();
     }

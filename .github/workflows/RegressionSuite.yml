@@ -4,21 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       browser:
-        description: 'Choose browser: chrome, edge'
+        description: 'Choose browser:'
         required: true
         default: 'chrome'
         type: choice
         options:
           - 'chrome'
           - 'edge'
-      suite:
-        description: 'Choose automation suite: RegressionSuite, FeaturesSuite'
+      workers:
+        description: 'Choose number of workers(1-4):'
         required: true
-        default: 'RegressionSuite'
-        type: choice
-        options:
-          - RegressionSuite
-          - FeaturesSuite
+        default: 2
+        type: number
 
 env:
   DB_HOST: 172.18.0.1   # Database host
@@ -69,7 +66,7 @@ jobs:
           mysql -h ${{ env.DB_HOST }} -P ${{ env.DB_PORT }} -u ${{ env.DB_USER }} -p${{ env.DB_PASSWORD }} < itSchoolDBQueries.sql
 
       - name: Run ${{ github.event.inputs.suite }}
-        run: mvn clean install -Dci_cd=true -Dbrowser=${{ github.event.inputs.browser }} -Dgroups=@regression -Dthreads=${{ github.event.inputs.workers }}
+        run: mvn clean install -Dci_cd=true -Dbrowser=chrome -DsuiteXmlFile=suites/RegressionSuite -PCustomSuite
 
       - name: Publish suite results
         if: always()

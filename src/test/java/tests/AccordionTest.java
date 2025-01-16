@@ -8,10 +8,11 @@ import pages.MenuPageType;
 import pages.widgets.AccordionPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class AccordionTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void accordionMethod() {
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

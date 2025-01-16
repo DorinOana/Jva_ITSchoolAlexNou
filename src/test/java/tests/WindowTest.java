@@ -8,10 +8,11 @@ import pages.MenuPageType;
 import pages.alertFrameWindow.AlertFrameWindowPage;
 import pages.alertFrameWindow.WindowPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class WindowTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.ALERTS_FRAME_WINDOWS_SUITE})
     public void windowMethod(){
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_ALERTSFRAMEWINDOW);

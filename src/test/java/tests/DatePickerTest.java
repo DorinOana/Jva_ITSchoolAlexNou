@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.widgets.DatePickerPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class DatePickerTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void datePickerMethod() {
         DatePickerObject datePickerObject = new DatePickerObject(DataResource.TEST_DATE_PICKER);
 

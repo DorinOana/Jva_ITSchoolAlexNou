@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.widgets.AutoCompletePage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class AutoCompleteTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void autoCompleteMethod() {
         AutoCompleteObject autoCompleteObject = new AutoCompleteObject(DataResource.TEST_AUTO_COMPLETE);
 

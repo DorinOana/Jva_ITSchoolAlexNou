@@ -9,10 +9,11 @@ import pages.widgets.ProgressPage;
 import pages.widgets.ToolTipsPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class ToolTipsTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void toolTipsMethod() {
         HomePage homePage = new HomePage(getDriver());
         homePage.enterSpecificMenu(MenuPageType.MENU_WIDGETS);

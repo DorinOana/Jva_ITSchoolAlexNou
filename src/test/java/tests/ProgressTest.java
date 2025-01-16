@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.widgets.ProgressPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class ProgressTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void progressMethod() {
         ProgressObject progressObject = new ProgressObject(DataResource.TEST_PROGRESS_BAR);
 

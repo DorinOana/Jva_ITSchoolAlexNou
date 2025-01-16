@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.alertFrameWindow.AlertFrameWindowPage;
 import pages.alertFrameWindow.AlertPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class AlertTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.ALERTS_FRAME_WINDOWS_SUITE})
     public void alertMethod() {
         AlertObject alertObject = new AlertObject(DataResource.TEST_ALERT);
 

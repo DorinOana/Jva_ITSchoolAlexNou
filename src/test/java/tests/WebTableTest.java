@@ -10,10 +10,11 @@ import pages.elements.ElementsPage;
 import pages.HomePage;
 import pages.elements.WebTablePage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class WebTableTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.ELEMENTS_SUITE})
     public void webTableMethod() {
         WebTableObject webTableObject = new WebTableObject(DataResource.TEST_WEB_TABLE);
 

@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.widgets.SliderPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class SliderTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void sliderMethod() {
         SliderObject sliderObject = new SliderObject(DataResource.TEST_SLIDER);
 

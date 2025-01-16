@@ -10,10 +10,11 @@ import pages.MenuPageType;
 import pages.widgets.SelectMenuPage;
 import pages.widgets.WidgetsPage;
 import sharedData.Hooks;
+import suites.TestSuite;
 
 public class SelectMenuTest extends Hooks {
 
-    @Test
+    @Test(groups = {TestSuite.REGRESSION_SUITE, TestSuite.WIDGETS_SUITE})
     public void selectMenuMethod() {
         SelectMenuObject selectMenuObject = new SelectMenuObject(DataResource.TEST_SELECT_MENU);
 
