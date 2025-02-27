@@ -1,0 +1,22 @@
+{
+    "DriverConfig": {
+        "LocalBrowser": "chrome",
+        "Url": "https://demoqa.com/",
+        "Headless": false,
+        "Gpu": "--disable-gpu",
+        "Infobars": "--disable-infobars",
+        "Extensions": "--disable-extensions",
+        "Resolution": "window-size=1920,1080",
+        "Sandbox": "--no-sandbox",
+        "BrowserCheck": "--no-default-browser-check",
+        "DevShm": "--disable-dev-shm-usage",
+        "SearchEngine": "--disable-search-engine-choice-screen"
+    },
+    "DatabaseConfig": {
+        "Port": 3306,
+        "Database": "itschooldemoqadb",
+        "Username": "root",
+        "Password": "root1234",
+        "RemoteServer": "172.18.0.1"
+    }
+}

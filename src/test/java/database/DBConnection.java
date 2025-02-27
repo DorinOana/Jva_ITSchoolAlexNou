@@ -19,7 +19,7 @@ public class DBConnection {
 
     @SneakyThrows(SQLException.class)
     private void createConnection() {
-        Configuration configuration = new GeneralConfig().createConfig();
+        Configuration configuration = GeneralConfig.createConfig(Configuration.class);
         con = DriverManager.getConnection(getPreparedUrl(configuration), configuration.databaseConfig.username, configuration.databaseConfig.password);
     }
 

@@ -11,7 +11,7 @@ public class BrowserFactory {
     public WebDriver getBrowserDriver() {
         String ci_cd = System.getProperty("ci_cd");
         String browser = System.getProperty("browser");
-        Configuration configuration = new GeneralConfig().createConfig();
+        Configuration configuration = GeneralConfig.createConfig(Configuration.class);
 
         if(Boolean.parseBoolean(ci_cd)) {
             configuration.driverConfig.setHeadless(true);

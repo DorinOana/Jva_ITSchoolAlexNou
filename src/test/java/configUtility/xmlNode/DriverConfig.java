@@ -1,35 +1,30 @@
 package configUtility.xmlNode;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Setter;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-
-@XmlAccessorType(XmlAccessType.FIELD)
 public class DriverConfig {
-
-    @XmlElement(name="LocalBrowser")
+    @JsonProperty("LocalBrowser")
     public String localBrowser;
-    @XmlElement(name="Url")
+    @JsonProperty("Url")
     public String url;
-    @XmlElement(name="Gpu")
+    @JsonProperty("Gpu")
     public String gpu;
-    @XmlElement(name="Infobars")
+    @JsonProperty("Infobars")
     public String infoBars;
     @Setter
-    @XmlElement(name="Headless")
+    @JsonProperty("Headless")
     public Boolean headless;
-    @XmlElement(name="Extensions")
+    @JsonProperty("Extensions")
     public String extensions;
-    @XmlElement(name="Resolution")
+    @JsonProperty("Resolution")
     public String resolution;
-    @XmlElement(name="Sandbox")
+    @JsonProperty("Sandbox")
     public String sandbox;
-    @XmlElement(name = "BrowserCheck")
+    @JsonProperty("BrowserCheck")
     public String browserCheck;
-    @XmlElement(name = "DevShm")
+    @JsonProperty("DevShm")
     public String devShm;
-    @XmlElement(name="SearchEngine")
+    @JsonProperty("SearchEngine")
     public String searchEngine;
 }

@@ -1,13 +1,10 @@
 package configUtility.xmlNode;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement(name="configuration")
 public class Configuration {
-
-    @XmlElement(name="DriverConfig")
+    @JsonProperty("DriverConfig")
     public DriverConfig driverConfig;
-    @XmlElement(name = "DatabaseConfig")
+    @JsonProperty("DatabaseConfig")
     public DatabaseConfig databaseConfig;
 }
