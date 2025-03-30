@@ -11,7 +11,7 @@ public class SharedData {
     private WebDriver driver;
 
     public void initializeDriver(){
-        driver = new BrowserFactory().getBrowserDriver();
+        driver = new BrowserFactory().createBrowserDriver();
         LoggerUtility.info("The driver is opened with success");
     }
 

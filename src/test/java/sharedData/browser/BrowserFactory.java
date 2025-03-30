@@ -8,7 +8,7 @@ import configUtility.xmlNode.Configuration;
 
 public class BrowserFactory {
 
-    public WebDriver getBrowserDriver() {
+    public WebDriver createBrowserDriver() {
         String ci_cd = System.getProperty("ci_cd");
         String browser = System.getProperty("browser");
         Configuration configuration = GeneralConfig.createConfig(Configuration.class);
