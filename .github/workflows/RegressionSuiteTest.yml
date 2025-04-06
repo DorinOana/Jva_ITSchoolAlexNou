@@ -24,7 +24,7 @@ env:
   DB_PASSWORD: root1234 # Database password
 
 jobs:
-  test:
+  Regression:
 
     runs-on: ubuntu-20.04
     permissions: write-all
